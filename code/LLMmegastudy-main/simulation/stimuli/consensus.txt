@@ -1,0 +1,35 @@
+Science advances through an ongoing process of testing, refinement, and discovery. In some areas, evidence is so strong that scientists reach near-universal agreement. In others, disagreement remains as researchers continue to collect data, exchange scientific arguments, and improve models. This process is not a weakness but a fundamental part of how science progresses.
+
+Now we would like you to make estimations about scientific agreement. Please indicate the percentage of scientists you think agree with each of the below statements.
+
+[Randomize with #3 always in the middle]
+
+1)“Human activities are the primary cause of global warming since the mid-20th century.” [0-100 slider]
+
+2)“Increasing carbon dioxide in the atmosphere warms the planet.” [0-100 slider]
+
+3)“The world will reach net-zero CO₂ emissions before 2085”.  [0-100 slider]
+
+Correct answers:
+
+ 99%
+
+100%
+
+66%
+
+Feedback: Given directly after each item
+
+1) Surveys of scientists show that 99% of climate scientists agree that human activities—especially burning coal, oil, and gas—are the main cause of recent global warming (Myers et al., 2021). This conclusion comes from many independent lines of evidence: satellite temperature records, ocean-heat measurements, retreating glaciers, and physical models of the atmosphere. The agreement exists because multiple methods point to the same result, not because of any single study.
+Source:
+Myers, K. F., Doran, P. T., Cook, J., Kotcher, J. E., & Myers, T. A. (2021). Consensus revisited: quantifying scientific agreement on climate change and climate expertise among Earth scientists 10 years later. Environmental Research Letters, 16(10), 104030.
+
+2) Nearly all climate scientists (essentially ~100%) agree that increasing carbon dioxide (CO₂) in the atmosphere causes the planet to warm (Intergovernmental Panel on Climate Change, 2021). This rests on well-tested physics: CO₂ absorbs and re-emits infrared (heat) radiation, reducing how much heat escapes to space. The effect has been confirmed in laboratory spectroscopy and in real-world observations. For example, satellites detect changes in Earth’s outgoing infrared spectrum consistent with increased greenhouse trapping, and surface instruments measure increased downward infrared radiation attributable to rising CO₂.
+Source:
+Intergovernmental Panel on Climate Change. (2021). AR6 WGI FAQs: Climate Change 2021—The Physical Science Basis.
+
+3) Climate scientists are less unanimous about when the world will reach net-zero CO₂ because it depends on future policy, technology adoption, and economic choices, not just physical laws. In a 2024 survey of 211 Intergovernmental Panel on Climate Change report authors, 66% believed the world would reach net-zero CO₂ before 2085 (Wynes et al., 2024). Estimates like these are updated as new evidence emerges, such as changes in emissions trends, new policies, and improvements in clean-energy technologies.
+Source:
+Wynes, S., Davis, S. J., Dickau, M., Ly, S., Maibach, E., Rogelj, J., ... & Matthews, H. D. (2024). Perceptions of carbon dioxide emission reductions and future warming among climate experts. Communications Earth & Environment, 5(1), 498
+Summary:
+Climate scientists overwhelmingly agree that the planet is warming, that CO₂ is the key driver of this warming, and that human activity is the primary cause of CO₂. Even if their specific projections of our climate sometimes differ, climate scientists still overwhelmingly agree on the core conclusion that cutting CO₂ emissions reduces future warming and related risks.
