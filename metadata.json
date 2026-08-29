@@ -24,7 +24,7 @@
       "orcid": ""
     }
   ],
-  "abstract": "",
+  "abstract": "This repository direct predict treatment-effect using Claude Sonnet 4.6 with literature-conditioned retrieval-augmented generation. Predictions are calibrated and reported as average treatment effects for 16 interventions across 13 outcomes.",
   "license": "CC-BY-4.0",
   "tier": 3,
   "entry": "secondary-2",
