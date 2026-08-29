@@ -1,0 +1,58 @@
+{
+  "upload_type": "software",
+  "title": "Silicon Sample Benchmark — Tier 3 (direct effect forecast) submission (team team_28)",
+  "version": "1.0-t3",
+  "language": "eng",
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "creators": [
+    {
+      "name": "Adeeba, Farah",
+      "affiliation": "University of Konstanz"
+    },
+    {
+      "name": "Ma, Jing",
+      "affiliation": "University of Konstanz"
+    },
+    {
+      "name": "Ferreira Goncalves, Marcia",
+      "affiliation": "Graphwise"
+    },
+    {
+      "name": "Pellert, Max",
+      "affiliation": "Barcelona Supercomputing Center"
+    }
+  ],
+  "description": "<p>Tier&nbsp;3 (direct effect forecast) submission to the <a href=\"https://janpfander.github.io/llm_predictions_megastudy/\">Silicon Sample Benchmark<\/a> (team <code>team_28<\/code>).<\/p><p>Approach family: direct forecast, single model, literature-conditioned (RAG). Model(s): claude-sonnet-4-6. Coverage: 16 interventions &times; 13 preregistered outcomes.<\/p><p>This record archives the prediction file(s), generation code, and method registration form.<\/p>",
+  "keywords": [
+    "Silicon Sample Benchmark",
+    "silicon sampling",
+    "large language models",
+    "computational social science",
+    "survey methodology",
+    "public opinion",
+    "climate communication",
+    "treatment effect prediction"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://janpfander.github.io/llm_predictions_megastudy/",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "publication-other"
+    },
+    {
+      "identifier": "https://janpfander.github.io/llm_predictions_megastudy/amendment_preregistration.html",
+      "relation": "references",
+      "scheme": "url",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "https://github.com/lieblingszz/team28-tier3-secondary-2",
+      "relation": "isCompiledBy",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ],
+  "notes": "Team team_28. Disclosure class A."
+}
