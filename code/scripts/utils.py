@@ -604,7 +604,7 @@ MODEL_CONFIG = {
     # repo-pinned vllm==0.8.5 cannot serve the qwen3_5 architecture, so this
     # needs the separate .venv-vllm (vllm 0.19.1), started with:
     #
-    #   ./.venv-vllm/bin/vllm serve $MODELS_DIR/Qwen3.8-27B \
+    #   ./code/.venv-vllm/bin/vllm serve $MODELS_DIR/Qwen3.8-27B \
     #       --served-model-name qwen38 --port 8000 \
     #       --gpu-memory-utilization 0.78 --max-model-len 32768 \
     #       --additional-config '{"gdn_prefill_backend":"triton"}'

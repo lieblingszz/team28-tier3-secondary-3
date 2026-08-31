@@ -10,13 +10,12 @@
 #   ./code/scripts/run_hipporag.sh
 #   cd code/scripts && ./run_hipporag.sh         # identical result
 #
-# The corpus, graph index and survey data all ship inside code/ and need no
-# configuration. Two things do NOT ship and must be provided:
+# The corpus and survey data ship inside code/. The graph index is reused when
+# present and rebuilt when absent. The following must be provided:
 #
 #   code/model/    empty — download the checkpoints from Hugging Face first,
 #                  see README.md, "Downloading the models"
-#   the venv       a virtualenv cannot be relocated, so build it yourself and
-#                  point VENV at it (default: ../../.venv-hipporag)
+#   the venv       create it at code/.venv-hipporag, or point VENV elsewhere
 #
 #   VENV=/path/to/.venv-hipporag MODELS_DIR=/path/to/models ./run_hipporag.sh
 #
@@ -78,10 +77,9 @@ set -o pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # code/scripts
 ROOT="$(cd "$DIR/.." && pwd)"                         # code
-# A virtualenv hardcodes absolute paths, so it is the one thing that cannot
-# ship inside code/. Default to a sibling of code/; override with VENV.
-BASE="$(cd "$ROOT/.." && pwd)"
-VENV="${VENV:-$BASE/.venv-hipporag}"
+# Virtual environments live directly under code/ alongside scripts/, data/,
+# corpus/, and results/. Override with VENV when needed.
+VENV="${VENV:-$ROOT/.venv-hipporag}"
 TS="$(date +%Y%m%d_%H%M%S)"
 MODEL="${MODEL:-qwen_hf}"
 VLLM_URL="${VLLM_URL:-http://localhost:8000/v1}"
@@ -94,7 +92,7 @@ mkdir -p "$ROOT/results"
 
 if [ ! -x "$VENV/bin/python" ]; then
     echo "error: no python at $VENV/bin/python" >&2
-    echo "       build it per README.md / requirements-hipporag.txt, or set VENV=<path>" >&2
+    echo "       build it per code/scripts/README.md, or set VENV=<path>" >&2
     exit 1
 fi
 
@@ -108,7 +106,7 @@ case "$MODEL" in
     # ~1 minute in, after the embedding model has already loaded.
     if ! curl -s -m 5 -o /dev/null "$VLLM_URL/models"; then
         echo "error: no vLLM server at $VLLM_URL" >&2
-        echo "       start it first — see README.md, 'Serving Qwen3.8-27B'." >&2
+        echo "       start it first — see code/scripts/README.md, 'Start the Qwen server'." >&2
         exit 1
     fi
     export HIPPORAG_LLM_BASE_URL="$VLLM_URL"

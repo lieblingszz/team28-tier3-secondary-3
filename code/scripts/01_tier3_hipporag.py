@@ -37,8 +37,8 @@ Run it through run_hipporag.sh (which checks the vLLM server, records the
 GPU state and tees a timestamped log) rather than directly. Direct use, from
 the repo root, needs the HippoRAG venv:
 
-    ./.venv-hipporag/bin/python code/scripts/01_tier3_hipporag.py --model qwen38 --quick
-    ./.venv-hipporag/bin/python code/scripts/01_tier3_hipporag.py --model qwen38 --graph_weight 0.7
+    ./code/.venv-hipporag/bin/python code/scripts/01_tier3_hipporag.py --model qwen38 --quick
+    ./code/.venv-hipporag/bin/python code/scripts/01_tier3_hipporag.py --model qwen38 --graph_weight 0.7
 """
 
 import os
@@ -61,15 +61,10 @@ from utils import (
     make_client, call_api, parse_number, parse_scores,
 )
 
-# Everything the pipeline writes goes here by default: code/scripts/ ->
-# code/ -> code/results/, beside the model outputs the ensemble step reads.
-# Resolved from this file's own location, NOT the working directory -- the
-# original default was "./results", which silently sent a run launched from
-# scripts/ into scripts/results/ instead of the intended folder.
 RESULTS_DIR = Path(__file__).parent.parent / "results"
 
-# ── Calibration (Ashokkumar et al. 2026: b = 0.56) ───────────────────
-CALIBRATION_FACTOR = 0.56
+
+CALIBRATION_FACTOR = 0.35
 
 
 def _rag_tag(use_rag, graph_weight=1.0):

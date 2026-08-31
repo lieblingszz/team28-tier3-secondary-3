@@ -11,3 +11,8 @@ maintainer/
 .DS_Store
 __pycache__/
 *.pyc
+
+# Local Python environments live under code/
+/code/.venv/
+/code/.venv-hipporag/
+/code/.venv-vllm/
