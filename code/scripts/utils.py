@@ -7,10 +7,7 @@ import time
 from pathlib import Path
 import pymupdf  # PyMuPDF
 
-# Where the local Qwen checkpoints live. code/model/ ships EMPTY -- the
-# checkpoints are tens of GB, so they have to be downloaded from Hugging Face
-# first; see README.md, "Downloading the models". Point MODELS_DIR at an
-# existing copy to avoid re-downloading.
+
 MODELS_DIR = Path(os.environ.get(
     "MODELS_DIR", Path(__file__).parent / "../model")).resolve()
 # ════════════════════════════════════════════════════════════════════
