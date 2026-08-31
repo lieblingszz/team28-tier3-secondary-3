@@ -10,7 +10,7 @@ Reproducibility materials for this entry are available at <https://github.com/li
 
 - **0.1 Team ★** — RAG team silicon sample study: Farah Adeeba (University of Konstanz), Jing Ma (University of Konstanz), Marcia Ferreira Goncalves (Graphwise), and Max Pellert (Barcelona Supercomputing Center). Corresponding contact: max.pellert@bsc.es.
 
-- **0.2 Plain-language summary ★** — This entry combines literature-conditioned forecasts from GPT-4o, GPT-5.4, Claude Sonnet 4.6, and Qwen3.8-27B. Qwen contributes two runs that differ only in retrieval ranking. These runs are averaged first, after which the four model-level forecasts receive equal weight. All members use the same global calibration factor.
+- **0.2 Plain-language summary ★** — This entry combines literature-conditioned forecasts from GPT-4o, GPT-5.4, Claude Sonnet 4.6, and Qwen3.8-27B. Qwen contributes two runs that differ only in retrieval ranking. These runs are averaged first, after which the four model-level forecasts receive equal weight. All members use the same global calibration factor with 0.35.
 
 - **0.3 Submission tier and approach family ★** — Tier 3 direct forecasting with retrieval-augmented generation and model-level ensembling. No respondent profiles or synthetic survey responses are generated.
 
