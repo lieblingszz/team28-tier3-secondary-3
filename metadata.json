@@ -36,10 +36,10 @@
     "Qwen/Qwen3.8-27B"
   ],
   "code_repository": "https://github.com/lieblingszz/team28-tier3-secondary-3",
-  "code_doi": "https://doi.org/10.5281/zenodo.22212291",
+  "code_doi": "https://doi.org/10.5281/zenodo.22212290",
   "disclosure_class": "A",
   "escrow_doi": null,
-  "zenodo_doi": "https://doi.org/10.5281/zenodo.22212291",
+  "zenodo_doi": "https://doi.org/10.5281/zenodo.22212290",
   "prediction_files": [
     {
       "file": "predictions/team_28_T3_secondary-3_v1.csv",
