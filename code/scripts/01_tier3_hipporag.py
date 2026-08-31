@@ -1,46 +1,3 @@
-"""
-01_tier3_hipporag.py
---------------------
-Tier 3 Silicon Sample Benchmark Pipeline -- HippoRAG retrieval only.
-
-The VectorRAG (ChromaDB / TF-IDF) backend and its options have been removed,
-so the only retrieval path is the OpenIE knowledge graph + Personalized
-PageRank one described in hipporag_rag.py. Nothing else about the method
-changed.
-Group: Farah Adeeba, Jing Ma, Max Pellert, Marcia Ferreira
-
-Approach: Query-specific RAG on scientific literature + TWO-STEP
-relative-scoring prediction.
-
-Step 1 — RELATIVE SCORING: Given all 16 interventions, score each one
-         on a -3 (meaningfully harmful) to +3 (strongest positive effect)
-         scale for a given outcome, with ties allowed. This still forces
-         the model to compare interventions against each other, but no
-         longer fabricates a full 1-16 ordering when several interventions
-         are genuinely close or have ~zero effect.
-
-Step 2 — EFFECT SIZES: For each intervention, estimate the actual effect
-         size. The Step 1 score is passed along only as *supporting*
-         comparative evidence — the model is told to estimate the
-         absolute ATE independently from the intervention content and
-         the retrieved literature, not to mechanically scale the score.
-
-RAG design: retrieval is query-specific rather than one shared context
-reused for every outcome/intervention. Step 1 (which compares all 16
-interventions at once for a single outcome) uses an outcome-specific
-query. Step 2 (per-intervention effect estimate) uses an
-intervention x outcome specific query, so e.g. the "Consensus"
-intervention pulls trust/consensus literature for the trust_post outcome,
-but behavior/donation literature for the donation outcome.
-
-Run it through run_hipporag.sh (which checks the vLLM server, records the
-GPU state and tees a timestamped log) rather than directly. Direct use, from
-the repo root, needs the HippoRAG venv:
-
-    ./code/.venv-hipporag/bin/python code/scripts/01_tier3_hipporag.py --model qwen38 --quick
-    ./code/.venv-hipporag/bin/python code/scripts/01_tier3_hipporag.py --model qwen38 --graph_weight 0.7
-"""
-
 import os
 import sys
 import csv
@@ -50,8 +7,7 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-# This file is only ever RUN, never imported (its name starts with a digit),
-# so a single flat import of the sibling modules is enough.
+
 sys.path.insert(0, str(Path(__file__).parent))
 from utils import (
     OFFICIAL_OUTCOMES, REVERSE_CODED_OUTCOMES, MODEL_CONFIG,
