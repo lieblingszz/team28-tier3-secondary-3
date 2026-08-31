@@ -128,4 +128,4 @@ Reproducibility materials for this entry are available at <https://github.com/li
 
 ## L · Disclosure class
 
-This entry is **A · Open**. All applicable items are public. Entry-specific methods, prompts, inputs, frozen member forecasts, outputs, logs, and reproduction instructions are openly available. Hosted-model documentation is provided through the public supporting entry. A limitation concerning unarchived raw Qwen forecasting responses is disclosed explicitly in K.2.
+This entry is **A · Open**. All retained materials are public. Entry-specific methods, prompts, inputs, frozen member forecasts, outputs, logs, and reproduction instructions are openly available. Hosted-model documentation is provided through the public supporting entry. A limitation concerning unarchived raw Qwen forecasting responses is disclosed explicitly in K.2.
