@@ -8,22 +8,26 @@
   "creators": [
     {
       "name": "Adeeba, Farah",
-      "affiliation": "University of Konstanz"
+      "affiliation": "University of Konstanz",
+      "orcid": "0009-0001-1740-8657"
     },
     {
       "name": "Ma, Jing",
-      "affiliation": "University of Konstanz"
+      "affiliation": "University of Konstanz",
+      "orcid": "0009-0007-8951-9819"
     },
     {
       "name": "Ferreira Goncalves, Marcia",
-      "affiliation": "Graphwise"
+      "affiliation": "Graphwise",
+      "orcid": "0000-0001-5337-4637"
     },
     {
       "name": "Pellert, Max",
-      "affiliation": "Barcelona Supercomputing Center"
+      "affiliation": "Barcelona Supercomputing Center",
+      "orcid": "0000-0002-6557-7607"
     }
   ],
-  "description": "<p>Tier&nbsp;3 (direct effect forecast) submission to the <a href=\"https://janpfander.github.io/llm_predictions_megastudy/\">Silicon Sample Benchmark<\/a> (team <code>team_28<\/code>).<\/p><p>Approach family: direct forecast, single model, literature-conditioned (RAG). Model(s): claude-sonnet-4-6. Coverage: 16 interventions &times; 13 preregistered outcomes.<\/p><p>This record archives the prediction file(s), generation code, and method registration form.<\/p>",
+  "description": "<p>This Tier 3 entry uses a literature-conditioned multi-model ensemble to directly forecast treatment effects. The ensemble combines predictions from GPT-4o, GPT-5.4, Claude Sonnet 4.6, and Qwen3.8-27B. Qwen3.8-27B contributes two HippoRAG-based prediction series: one using the standard HippoRAG ranking and one using PIT-normalized fusion of 0.7 × graph and 0.3 × dense retrieval. The two Qwen series are averaged first, after which the four model-level prediction series are combined with equal weight. All predictions are calibrated and reported as average treatment effects for 16 interventions across 13 outcomes.<\/p>",
   "keywords": [
     "Silicon Sample Benchmark",
     "silicon sampling",
@@ -48,7 +52,7 @@
       "resource_type": "publication-preprint"
     },
     {
-      "identifier": "https://github.com/lieblingszz/team28-tier3-secondary-2",
+      "identifier": "https://github.com/lieblingszz/team28-tier3-secondary-3",
       "relation": "isCompiledBy",
       "scheme": "url",
       "resource_type": "software"

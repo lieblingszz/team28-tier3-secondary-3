@@ -1,0 +1,54 @@
+Step 2 prompt — effect size (ATE) estimation
+Source: scripts/utils.py, build_effect_prompt()
+Used by: scripts/tier3_pipeline.py, predict_outcome() (called once per
+         intervention x outcome pair, n_samples times each)
+
+Placeholders (filled in per intervention x outcome pair):
+  {intro}              - one of 3 rotating expert personas, chosen by
+                          intro_idx (varies per sample so repeated calls
+                          for the same pair aren't identical)
+  {rag_context}         - retrieved literature for this intervention x
+                          outcome pair (merged intervention-text +
+                          outcome queries), or a placeholder if RAG is
+                          disabled/dry-run
+  {intervention_name}   - the intervention's condition name
+  {intervention_text}   - first 300 chars of the intervention's stimulus text
+  {question}            - the survey item's question text
+  {scale}               - the survey item's scale labels
+  {funding_note}        - extra guidance appended ONLY for the funding_5
+                          item (empty string otherwise) — see note below
+  {score}               - the mean Step 1 relative score (-3..+3) for
+                          this intervention on this outcome
+  {effect_range}        - allowed ATE range, depends on item type
+                          (binary / integer 0-10 / 0-100 slider)
+  {example}             - a worked example matching {effect_range}
+
+--------------------------------------------------------------------------
+
+{intro}
+
+1. TASK
+Predict the average treatment effect (ATE) of this intervention relative to a no-message control group, for the specified outcome. Base your estimate on the intervention content, the outcome, and the retrieved evidence below. Effects in behavioral experiments are often modest — do not assume the intervention must have a positive effect. The true effect may be positive, approximately zero, or negative.
+
+2. RETRIEVED EVIDENCE
+{rag_context}
+
+3. EXPERIMENTAL INFORMATION
+INTERVENTION: {intervention_name}
+TEXT: """{intervention_text}"""
+
+OUTCOME: {question}
+SCALE: {scale}
+Note: read this question's own wording carefully before predicting a direction. Some outcomes are worded as their own distinct construct (e.g. "distrust", "how much do you disagree") rather than as a mirror of general trust or belief — a message that builds trust does not automatically move every other item in the "positive" direction. Predict the effect on exactly what this question asks, not on climate trust in general.{funding_note}
+
+4. RELATIVE COMPARISON
+In an independent comparison step across all 16 interventions, this intervention received a relative-effect score of {score:+.1f} on a -3 to +3 scale (0 = no clear effect vs. the other interventions; ties were allowed). This score is on a DIFFERENT scale than your answer and is supporting context only. Do NOT copy this number or rescale it mechanically (e.g. score x constant) — that discards the intervention content and retrieved evidence above. Independently reason about the likely direction and magnitude on the outcome's own scale.
+
+In AT MOST 15 words, reason about the likely direction and rough magnitude given the intervention content and evidence (not the score above). Keep it brief — you MUST leave room for the answer line below. Then, on a new line, write your final answer as:
+ANSWER: <number {effect_range}> ({example})
+
+--------------------------------------------------------------------------
+
+{funding_note} (only appended when item_key == "funding_5"):
+
+Note on this item specifically: it asks about spending ADEQUACY directly (0 = far too little, 100 = far too much). Think through what the intervention content implies about actual spending levels: content that reveals climate research funding is smaller than people assume (relative to other research areas, or in absolute terms) should move this raw item DOWN, toward "too little" (a negative raw effect) -- it corrects an overestimate. Content that emphasizes waste, corporate/private funding influence, or excess should move it UP, toward "too much" (a positive raw effect). You do not need to reverse-code your answer yourself -- just predict the effect on the RAW item as worded above.

@@ -1,0 +1,432 @@
+{
+  "GW-Trust-in-Scientists-Statements.pdf": {
+    "publication_year": null,
+    "journal": null,
+    "paper_type": "mixed_methods",
+    "topics": ["trust in climate scientists", "climate beliefs", "source credibility"],
+    "related_interventions": ["High public trust", "Oil industry misinformation"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "belief_post", "concern_mean"],
+    "relevance_score": 2,
+    "notes": "Examines public trust in environmental scientists, climate beliefs, and responses to mainstream and skeptical scientific messages."
+  },
+  "alvarez_2023_trust_university_researchers.pdf": {
+    "publication_year": 2023,
+    "journal": "PLOS Climate",
+    "paper_type": "survey",
+    "topics": ["trust in university researchers", "climate denialism", "political polarization"],
+    "related_interventions": [],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "belief_post"],
+    "relevance_score": 2,
+    "notes": "Nationally representative survey (n=2,096) finds low trust in university research on climate is linked to denialism and calls for research on framing/messaging to build trust -- correlational, not a message-effect test."
+  },
+  "bernauer_2016_reframing_climate_policy.pdf": {
+    "publication_year": 2016,
+    "journal": "Nature Climate Change",
+    "paper_type": "experiment",
+    "topics": ["climate policy framing", "co-benefits", "public support"],
+    "related_interventions": [],
+    "related_outcomes": ["policy_general", "policy_specific_mean", "behavior_mean"],
+    "relevance_score": 1,
+    "notes": "Tests economic, community, health, and climate-risk frames and finds limited gains from simple reframing."
+  },
+  "besley_2017_conflict_interest.pdf": {
+    "publication_year": 2017,
+    "journal": "PLOS ONE",
+    "paper_type": "experiment",
+    "topics": ["conflict of interest", "industry partnerships", "research legitimacy"],
+    "related_interventions": ["Corporate reliance", "Funding"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "funding_perceptions"],
+    "relevance_score": 3,
+    "notes": "Shows that industry involvement can reduce perceived legitimacy of scientific research partnerships."
+  },
+  "brulle_2021_foundation_funding_countermovement.pdf": {
+    "publication_year": 2021,
+    "journal": "Climatic Change",
+    "paper_type": "content_analysis",
+    "topics": ["climate countermovement funding", "foundation philanthropy", "misinformation funding sources"],
+    "related_interventions": ["Funding", "Oil industry misinformation"],
+    "related_outcomes": [],
+    "relevance_score": 1,
+    "notes": "Institutional funding-flow analysis (2003-2018) of climate-countermovement organizations -- background context for the Funding/Oil industry misinformation stimuli, but tests no survey outcome itself."
+  },
+  "cologna_2024_trust_review.pdf": {
+    "publication_year": 2024,
+    "journal": "PLOS Climate",
+    "paper_type": "review",
+    "topics": ["trust in climate science", "distrust", "scientist engagement"],
+    "related_interventions": ["Funding", "Peer-review", "Portrait Prof. Cherry", "Interview Prof. Sebille"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "distrust_post", "policy_role_mean"],
+    "relevance_score": 2,
+    "notes": "Narrative review of trust, reasons for distrust, political engagement, and trustworthy climate communication."
+  },
+  "cologna_2025_trust_scientists_68.pdf": {
+    "publication_year": 2025,
+    "journal": "Nature Human Behaviour",
+    "paper_type": "observational",
+    "topics": ["global trust in scientists", "multidimensional trust", "scientists in policymaking"],
+    "related_interventions": ["High public trust"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "policy_role_mean", "inst_trust_mean"],
+    "relevance_score": 3,
+    "notes": "Measures competence, benevolence, integrity, and openness across 68 countries and finds generally high trust."
+  },
+  "cook_2017_inoculation.pdf": {
+    "publication_year": 2017,
+    "journal": "PLOS ONE",
+    "paper_type": "experiment",
+    "topics": ["misinformation", "inoculation", "scientific consensus"],
+    "related_interventions": ["Oil industry misinformation", "Consensus"],
+    "related_outcomes": ["belief_post", "concern_mean", "policy_general", "trust_post"],
+    "relevance_score": 3,
+    "notes": "Tests pre-emptive messages that explain misleading techniques or emphasize scientific consensus."
+  },
+  "dasandi_2022_framing_public_support.pdf": {
+    "publication_year": 2022,
+    "journal": "Communications Earth & Environment",
+    "paper_type": "multi_country_experiment",
+    "topics": ["message framing", "climate policy", "health and environmental frames"],
+    "related_interventions": [],
+    "related_outcomes": ["concern_mean", "policy_general", "policy_specific_mean", "behavior_mean"],
+    "relevance_score": 1,
+    "notes": "Finds positive, health, environmental, global, and immediate frames can increase climate-policy support."
+  },
+  "fairbrother_2016_geoengineering_moral_hazard.pdf": {
+    "publication_year": 2016,
+    "journal": "Climatic Change",
+    "paper_type": "experiment",
+    "topics": ["geoengineering", "trust in climate science", "climate policy support"],
+    "related_interventions": [],
+    "related_outcomes": ["trust_post", "policy_general", "policy_specific_mean"],
+    "relevance_score": 1,
+    "notes": "Tests whether information about solar geoengineering changes trust or support for emissions-reduction policies."
+  },
+  "fujimi_2021_trust_projection_formats.pdf": {
+    "publication_year": 2021,
+    "journal": "Mitigation and Adaptation Strategies for Global Change",
+    "paper_type": "experiment",
+    "topics": ["climate projections", "uncertainty formats", "trust"],
+    "related_interventions": ["Measurement & modeling (1)", "Measurement & modeling (2)", "Model accuracy"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "belief_post", "concern_mean"],
+    "relevance_score": 3,
+    "notes": "Compares average, range, and multi-value climate-projection formats and their effects on trust and concern."
+  },
+  "galdikiene_2026_pluralistic_ignorance.pdf": {
+    "publication_year": 2026,
+    "journal": "Journal of Economic Behavior & Organization",
+    "paper_type": "experiment",
+    "topics": ["pluralistic ignorance", "social norms", "carbon-tax support"],
+    "related_interventions": ["High public trust"],
+    "related_outcomes": ["policy_general", "policy_specific_mean", "donation_ams", "behavior_mean"],
+    "relevance_score": 2,
+    "notes": "Corrects perceived public support for carbon taxation and finds mixed effects, including possible donation backfire."
+  },
+  "goerg_2024_social_norm_nudges.pdf": {
+    "publication_year": 2024,
+    "journal": "Scientific Reports",
+    "paper_type": "experiment",
+    "topics": ["social norms", "regional variation", "climate policy support"],
+    "related_interventions": ["High public trust"],
+    "related_outcomes": ["policy_general", "policy_specific_mean"],
+    "relevance_score": 2,
+    "notes": "Shows that national norm information can increase policy support while regional norms may be ineffective or backfire."
+  },
+  "goldberg_2021_republican_advertising.pdf": {
+    "publication_year": 2021,
+    "journal": "Nature Climate Change",
+    "paper_type": "field_experiment",
+    "topics": ["Republican audiences", "targeted advertising", "climate beliefs"],
+    "related_interventions": ["Former skeptics"],
+    "related_outcomes": ["belief_post", "concern_mean", "policy_general"],
+    "relevance_score": 2,
+    "notes": "Tests targeted climate advertising and finds increased Republican understanding of climate existence, causes, and harms."
+  },
+  "goldfarb_kriner_2017_public_support_science_spending.pdf": {
+    "publication_year": 2017,
+    "journal": "Science Communication",
+    "paper_type": "survey_experiment",
+    "topics": ["federal science spending", "misperception correction", "budget framing"],
+    "related_interventions": ["Funding"],
+    "related_outcomes": ["funding_perceptions"],
+    "relevance_score": 3,
+    "notes": "Randomized correction telling respondents the true (low, ~1%) share of the federal budget spent on science shifts predicted support for more spending from 40% to 60% (p.83-89), with no partisan/motivated-reasoning difference -- same corrective-numbers mechanism as the Funding intervention."
+  },
+  "goldwert_2025_action_literacy.pdf": {
+    "publication_year": 2025,
+    "journal": "PNAS Nexus",
+    "paper_type": "experiment",
+    "topics": ["climate action literacy", "behavioral commitments", "spillover"],
+    "related_interventions": [],
+    "related_outcomes": ["behavior_mean", "policy_general", "donation_ams"],
+    "relevance_score": 1,
+    "notes": "Tests information about effective personal climate actions and finds improved commitments but reduced collective-action intentions."
+  },
+  "goldwert_2026_advocacy_megastudy.pdf": {
+    "publication_year": 2026,
+    "journal": "PNAS Nexus",
+    "paper_type": "megastudy",
+    "topics": ["climate advocacy megastudy", "collective efficacy framing", "moral foundations framing"],
+    "related_interventions": [],
+    "related_outcomes": ["policy_general", "behavior_mean", "donation_ams"],
+    "relevance_score": 3,
+    "notes": "Tests 17 expert-crowdsourced interventions (n=31,324) for public/political/financial climate advocacy; collective-efficacy+emotional framing and binding moral-foundations framing were most effective -- multi-intervention tournament like vlasceanu_2024/voelkel_2026, not yet matched to a single named stimulus."
+  },
+  "goldwert_2026_information_source.pdf": {
+    "publication_year": 2026,
+    "journal": "Journal of Environmental Psychology",
+    "paper_type": "experiment",
+    "topics": ["information source", "source credibility", "climate attitudes"],
+    "related_interventions": ["Corporate reliance", "Scientist community helpers", "Former skeptics"],
+    "related_outcomes": ["belief_post", "policy_general", "behavior_mean", "trust_post"],
+    "relevance_score": 3,
+    "notes": "Compares twelve information sources and finds large credibility differences but limited differences in message incorporation."
+  },
+  "hausfather_2020_climate_model_projections.pdf": {
+    "publication_year": 2020,
+    "journal": "Geophysical Research Letters",
+    "paper_type": "model_evaluation",
+    "topics": ["climate models", "projection accuracy", "historical validation"],
+    "related_interventions": ["Model accuracy", "Measurement & modeling (2)"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "belief_post"],
+    "relevance_score": 3,
+    "notes": "Evaluates historical climate-model projections and finds that most projected subsequent warming accurately."
+  },
+  "hautea_2024_scientist_biographies.pdf": {
+    "publication_year": 2024,
+    "journal": "Public Understanding of Science",
+    "paper_type": "experiment",
+    "topics": ["scientist biographies", "benevolence", "trustworthiness"],
+    "related_interventions": ["Portrait Prof. Cherry", "Scientist community helpers", "Interview Prof. Sebille"],
+    "related_outcomes": ["trust_multidimensional", "trust_post"],
+    "relevance_score": 3,
+    "notes": "Shows that benevolence information in scientist biographies can increase perceived integrity, benevolence, and willingness to trust."
+  },
+  "herberz_2023_partisan_framing.pdf": {
+    "publication_year": 2023,
+    "journal": "Journal of Environmental Psychology",
+    "paper_type": "experiment",
+    "topics": ["partisanship", "temporal framing", "climate policy support"],
+    "related_interventions": ["Former skeptics"],
+    "related_outcomes": ["policy_general", "policy_specific_mean", "belief_post"],
+    "relevance_score": 2,
+    "notes": "Examines how implicit and explicit partisan cues in climate messages shape policy support."
+  },
+  "howe_2019_uncertainty.pdf": {
+    "publication_year": 2019,
+    "journal": "Nature Climate Change",
+    "paper_type": "experiment",
+    "topics": ["uncertainty communication", "climate predictions", "trust"],
+    "related_interventions": ["Interview Prof. Maraun", "Measurement & modeling (1)", "Model accuracy"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "belief_post"],
+    "relevance_score": 3,
+    "notes": "Finds that bounded uncertainty can increase trust, while acknowledging irreducible uncertainty can remove that benefit."
+  },
+  "hoyle_2025_netzero_fairness.pdf": {
+    "publication_year": 2025,
+    "journal": "Energy Policy",
+    "paper_type": "survey_experiment",
+    "topics": ["distributive fairness", "net-zero policy", "competing frames"],
+    "related_interventions": ["Social justice"],
+    "related_outcomes": ["policy_general", "policy_specific_mean"],
+    "relevance_score": 2,
+    "notes": "Finds fairness perceptions strongly predict net-zero policy support and competing counterframes can neutralize pro-policy frames."
+  },
+  "hulkkonen_2024_tailored_info.pdf": {
+    "publication_year": 2024,
+    "journal": "npj Climate Action",
+    "paper_type": "experiment",
+    "topics": ["tailored climate information", "psychological distance", "local climate impacts"],
+    "related_interventions": ["Extreme weather predictions"],
+    "related_outcomes": ["belief_post", "concern_mean", "policy_general", "policy_specific_mean"],
+    "relevance_score": 3,
+    "notes": "Tests personalized local-impact information and finds increased knowledge with demographic-dependent policy effects."
+  },
+  "joon_2026_climate_justice_policy.pdf": {
+    "publication_year": 2026,
+    "journal": "Communications Earth & Environment",
+    "paper_type": "survey_experiment",
+    "topics": ["climate justice", "policy design", "distributive preferences"],
+    "related_interventions": ["Social justice"],
+    "related_outcomes": ["policy_general", "policy_specific_mean"],
+    "relevance_score": 2,
+    "notes": "Links climate-justice orientations to preferences for policy stringency, redistribution, and policy instruments."
+  },
+  "joslyn_2016_uncertainty_communication.pdf": {
+    "publication_year": 2016,
+    "journal": "Topics in Cognitive Science",
+    "paper_type": "experiment",
+    "topics": ["uncertainty estimates", "climate projections", "trust"],
+    "related_interventions": ["Interview Prof. Maraun", "Measurement & modeling (1)", "Model accuracy"],
+    "related_outcomes": ["trust_post", "belief_post", "concern_mean"],
+    "relevance_score": 3,
+    "notes": "Finds that including quantified uncertainty with climate projections can increase trust in the information."
+  },
+  "koetke_2025_intellectual_humility.pdf": {
+    "publication_year": 2025,
+    "journal": null,
+    "paper_type": "experiment",
+    "topics": ["intellectual humility", "scientist trustworthiness", "science communication"],
+    "related_interventions": ["Interview Prof. Maraun", "Peer-review"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "belief_post", "behavior_mean"],
+    "relevance_score": 3,
+    "notes": "Finds that portraying scientists as intellectually humble increases trust, research belief, and recommendation-following intentions."
+  },
+  "kotcher_2023_opponents_climate_action.pdf": {
+    "publication_year": 2023,
+    "journal": "The Lancet Planetary Health",
+    "paper_type": "experiment",
+    "topics": ["opponents of climate action", "fossil fuel industry", "health messaging"],
+    "related_interventions": ["Oil industry misinformation"],
+    "related_outcomes": ["trust_post", "policy_general", "policy_specific_mean", "behavior_mean"],
+    "relevance_score": 3,
+    "notes": "Finds that identifying fossil-fuel executives or politicians as opponents can increase policy support and advocacy intentions."
+  },
+  "macinnes_2026_trust_climate_why.pdf": {
+    "publication_year": 2026,
+    "journal": "Global Environmental Change",
+    "paper_type": "observational",
+    "topics": ["climate communicators", "source credibility", "audience differences"],
+    "related_interventions": ["Former skeptics", "Portrait Prof. Cherry", "Scientist community helpers", "Interview Prof. Sebille"],
+    "related_outcomes": ["trust_post", "belief_post", "policy_general", "behavior_mean"],
+    "relevance_score": 3,
+    "notes": "Shows that clarity, shared values, sincerity, and respect shape trust differently for climate believers and skeptics."
+  },
+  "offerwestort_2026_frame_fits.pdf": {
+    "publication_year": 2026,
+    "journal": "Research & Politics",
+    "paper_type": "experiment",
+    "topics": ["climate policy framing", "economic efficiency", "policy learning"],
+    "related_interventions": ["Social justice"],
+    "related_outcomes": ["policy_general", "policy_specific_mean"],
+    "relevance_score": 2,
+    "notes": "Compares scientific, religious, moral, efficiency, and equity frames and finds the efficiency frame performs best."
+  },
+  "orchinik_2024_learning_scientists.pdf": {
+    "publication_year": 2024,
+    "journal": null,
+    "paper_type": "experiment",
+    "topics": ["scientific consensus", "scientist credibility", "Bayesian updating"],
+    "related_interventions": ["Consensus"],
+    "related_outcomes": ["trust_multidimensional", "trust_post", "belief_post", "policy_general"],
+    "relevance_score": 3,
+    "notes": "Tests varying consensus levels and shows that consensus information changes both climate beliefs and perceptions of scientist skill."
+  },
+  "rabinovich_2012_communicator_motives.pdf": {
+    "publication_year": 2012,
+    "journal": "Journal of Environmental Psychology",
+    "paper_type": "experiment",
+    "topics": ["communicator motives", "trust", "message engagement"],
+    "related_interventions": ["Interview Prof. Maraun", "Scientist community helpers", "Interview Prof. Sebille"],
+    "related_outcomes": ["trust_post", "behavior_mean"],
+    "relevance_score": 3,
+    "notes": "Shows that perceived intent to inform rather than persuade can increase trust when message style matches expectations."
+  },
+  "rinscheid_2021_social_norms_elite_cues.pdf": {
+    "publication_year": 2021,
+    "journal": "Behavioural Public Policy",
+    "paper_type": "experiment",
+    "topics": ["social norms", "elite cues", "climate policy support"],
+    "related_interventions": ["High public trust", "Former skeptics"],
+    "related_outcomes": ["policy_general", "policy_specific_mean", "inst_trust_mean"],
+    "relevance_score": 2,
+    "notes": "Tests descriptive norms and political endorsements, finding limited norm effects and trust-dependent elite-cue effects."
+  },
+  "rode_2026_consensus_field.pdf": {
+    "publication_year": 2026,
+    "journal": "Science Communication",
+    "paper_type": "field_experiment",
+    "topics": ["consensus messaging", "gateway belief model", "doorstep communication"],
+    "related_interventions": ["Consensus"],
+    "related_outcomes": ["belief_post", "concern_mean", "policy_general", "behavior_mean"],
+    "relevance_score": 3,
+    "notes": "Field experiment finds consensus messages increase consensus estimates and climate belief but not downstream behavior."
+  },
+  "sanz-menendez_2019_credibility_sources.pdf": {
+    "publication_year": 2019,
+    "journal": "Public Understanding of Science",
+    "paper_type": "experiment",
+    "topics": ["institutional sources", "scientific credibility", "climate communication"],
+    "related_interventions": ["Corporate reliance", "Funding", "Scientist community helpers"],
+    "related_outcomes": ["trust_post", "inst_trust_mean", "belief_post"],
+    "relevance_score": 3,
+    "notes": "Shows that identical climate information receives different credibility depending on its institutional source."
+  },
+  "sinclair_2025_behavioral_interventions_tournament.pdf": {
+    "publication_year": 2025,
+    "journal": "PNAS",
+    "paper_type": "megastudy",
+    "topics": ["behavioral intervention tournament", "climate advocacy behavior", "psychological strategies"],
+    "related_interventions": [],
+    "related_outcomes": ["behavior_mean", "donation_ams", "policy_general"],
+    "relevance_score": 3,
+    "notes": "Intervention tournament (n=7,624) testing 17 psychological strategies to motivate climate information-sharing and action -- multi-intervention tournament like vlasceanu_2024/voelkel_2026, not yet matched to a single named stimulus."
+  },
+  "tiede_2026_public_engagement_norms.pdf": {
+    "publication_year": 2026,
+    "journal": "Nature Climate Change",
+    "paper_type": "experiment",
+    "topics": ["pluralistic ignorance", "climate action norms", "actual behavior"],
+    "related_interventions": ["High public trust"],
+    "related_outcomes": ["donation_ams", "behavior_mean", "policy_general"],
+    "relevance_score": 2,
+    "notes": "Finds people underestimate broad support but overestimate rare behaviors, and corrections have limited behavioral effects."
+  },
+  "vanderlinden_2015_gateway_belief.pdf": {
+    "publication_year": 2015,
+    "journal": "PLOS ONE",
+    "paper_type": "experiment",
+    "topics": ["scientific consensus", "gateway belief model", "climate policy"],
+    "related_interventions": ["Consensus"],
+    "related_outcomes": ["belief_post", "concern_mean", "policy_general"],
+    "relevance_score": 3,
+    "notes": "Provides experimental evidence that perceived scientific consensus influences climate beliefs, worry, and support for public action."
+  },
+  "veckalov_2024_consensus_27country.pdf": {
+    "publication_year": 2024,
+    "journal": "Nature Human Behaviour",
+    "paper_type": "multi_country_experiment",
+    "topics": ["scientific consensus", "cross-country communication", "climate beliefs"],
+    "related_interventions": ["Consensus"],
+    "related_outcomes": ["belief_post", "concern_mean", "policy_general", "trust_post"],
+    "relevance_score": 3,
+    "notes": "Across 27 countries, consensus messages reduce misperceptions and slightly increase beliefs and worry without direct policy effects."
+  },
+  "vlasceanu_2024_global_tournament.pdf": {
+    "publication_year": 2024,
+    "journal": "Science Advances",
+    "paper_type": "multi_country_experiment",
+    "topics": ["global intervention tournament", "climate beliefs", "climate behavior"],
+    "related_interventions": ["Social justice", "High public trust", "Extreme weather predictions"],
+    "related_outcomes": ["belief_post", "concern_mean", "policy_general", "behavior_mean"],
+    "relevance_score": 3,
+    "notes": "Compares eleven interventions in 63 countries and finds small, outcome-specific effects and no increase in effortful behavior."
+  },
+  "voelkel_2026_megastudy.pdf": {
+    "publication_year": 2026,
+    "journal": "Nature Climate Change",
+    "paper_type": "megastudy",
+    "topics": ["climate messaging", "comparative intervention effects", "partisan moderation"],
+    "related_interventions": ["Consensus", "Former skeptics", "Social justice", "Scientist community helpers"],
+    "related_outcomes": ["belief_post", "concern_mean", "policy_general", "behavior_mean", "donation_ams"],
+    "relevance_score": 3,
+    "notes": "Large registered-report comparison finds generally small and similar persuasive effects, with no increase in donations."
+  },
+  "wu_2025_copartisan_officials.pdf": {
+    "publication_year": 2025,
+    "journal": "Nature Communications",
+    "paper_type": "experiment",
+    "topics": ["co-partisan messengers", "elite cues", "climate mitigation intentions"],
+    "related_interventions": ["Former skeptics"],
+    "related_outcomes": ["belief_post", "behavior_mean", "policy_general"],
+    "relevance_score": 2,
+    "notes": "Finds co-partisan elected-official messages increase mitigation intentions without changing underlying climate beliefs."
+  },
+  "yale_gmu_2025_politics_policy_spring.pdf": {
+    "publication_year": 2025,
+    "journal": "Yale Program on Climate Change Communication / George Mason University CCCC",
+    "paper_type": "national_survey",
+    "topics": ["climate research funding", "public opinion", "partisan breakdown"],
+    "related_interventions": ["Funding"],
+    "related_outcomes": ["funding_perceptions"],
+    "relevance_score": 3,
+    "notes": "Climate Change in the American Mind: Politics & Policy, Spring 2025 (fielded May 2025). 79% of registered voters oppose ordering federal agencies to stop climate research (p.16-17,46); 80% support funding more renewable-energy research (p.9,40); both hold across party lines -- climate-specific baseline for funding_perceptions."
+  }
+}

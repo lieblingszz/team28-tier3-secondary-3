@@ -1,0 +1,209 @@
+condition,outcome,ate
+Corporate reliance,trust_multidimensional,1.0967
+Corporate reliance,trust_post,1.456
+Corporate reliance,distrust_post,-1.344
+Corporate reliance,funding_perceptions,0.175
+Corporate reliance,policy_role_mean,1.1935
+Corporate reliance,inst_trust_mean,0.7252
+Corporate reliance,belief_post,0.812
+Corporate reliance,concern_mean,0.7817
+Corporate reliance,policy_general,0.812
+Corporate reliance,policy_specific_mean,0.67
+Corporate reliance,behavior_mean,0.6417
+Corporate reliance,donation_ams,0.147
+Corporate reliance,newsletter_signup,0.007
+Social justice,trust_multidimensional,0.0758
+Social justice,trust_post,-0.609
+Social justice,distrust_post,-1.099
+Social justice,funding_perceptions,1.12
+Social justice,policy_role_mean,1.463
+Social justice,inst_trust_mean,-0.511
+Social justice,belief_post,0.588
+Social justice,concern_mean,1.1387
+Social justice,policy_general,0.889
+Social justice,policy_specific_mean,1.063
+Social justice,behavior_mean,0.1423
+Social justice,donation_ams,0.14
+Social justice,newsletter_signup,0.007
+Interview Prof. Maraun,trust_multidimensional,1.8276
+Interview Prof. Maraun,trust_post,1.582
+Interview Prof. Maraun,distrust_post,-1.456
+Interview Prof. Maraun,funding_perceptions,0.49
+Interview Prof. Maraun,policy_role_mean,0.861
+Interview Prof. Maraun,inst_trust_mean,0.8064
+Interview Prof. Maraun,belief_post,0.791
+Interview Prof. Maraun,concern_mean,0.6137
+Interview Prof. Maraun,policy_general,0.518
+Interview Prof. Maraun,policy_specific_mean,0.414
+Interview Prof. Maraun,behavior_mean,0.4865
+Interview Prof. Maraun,donation_ams,0.091
+Interview Prof. Maraun,newsletter_signup,0.007
+Funding,trust_multidimensional,0.9847
+Funding,trust_post,1.078
+Funding,distrust_post,-1.316
+Funding,funding_perceptions,2.1
+Funding,policy_role_mean,0.4375
+Funding,inst_trust_mean,0.0588
+Funding,belief_post,0.462
+Funding,concern_mean,0.2963
+Funding,policy_general,0.196
+Funding,policy_specific_mean,0.288
+Funding,behavior_mean,0.182
+Funding,donation_ams,0.07
+Funding,newsletter_signup,-0.0007
+Oil industry misinformation,trust_multidimensional,1.1632
+Oil industry misinformation,trust_post,1.708
+Oil industry misinformation,distrust_post,-1.855
+Oil industry misinformation,funding_perceptions,0.952
+Oil industry misinformation,policy_role_mean,1.519
+Oil industry misinformation,inst_trust_mean,0.4102
+Oil industry misinformation,belief_post,1.477
+Oil industry misinformation,concern_mean,1.3627
+Oil industry misinformation,policy_general,1.316
+Oil industry misinformation,policy_specific_mean,0.903
+Oil industry misinformation,behavior_mean,0.8645
+Oil industry misinformation,donation_ams,0.168
+Oil industry misinformation,newsletter_signup,0.0105
+Measurement & modeling (1),trust_multidimensional,1.3638
+Measurement & modeling (1),trust_post,1.456
+Measurement & modeling (1),distrust_post,-1.358
+Measurement & modeling (1),funding_perceptions,0.525
+Measurement & modeling (1),policy_role_mean,1.316
+Measurement & modeling (1),inst_trust_mean,0.84
+Measurement & modeling (1),belief_post,0.826
+Measurement & modeling (1),concern_mean,0.791
+Measurement & modeling (1),policy_general,0.504
+Measurement & modeling (1),policy_specific_mean,0.422
+Measurement & modeling (1),behavior_mean,0.4363
+Measurement & modeling (1),donation_ams,0.084
+Measurement & modeling (1),newsletter_signup,0.0035
+Former skeptics,trust_multidimensional,1.0844
+Former skeptics,trust_post,1.47
+Former skeptics,distrust_post,-1.33
+Former skeptics,funding_perceptions,1.085
+Former skeptics,policy_role_mean,1.3667
+Former skeptics,inst_trust_mean,0.7602
+Former skeptics,belief_post,1.19
+Former skeptics,concern_mean,1.1037
+Former skeptics,policy_general,1.19
+Former skeptics,policy_specific_mean,0.832
+Former skeptics,behavior_mean,0.924
+Former skeptics,donation_ams,0.154
+Former skeptics,newsletter_signup,0.0084
+High public trust,trust_multidimensional,0.9176
+High public trust,trust_post,1.344
+High public trust,distrust_post,-1.344
+High public trust,funding_perceptions,0.7
+High public trust,policy_role_mean,1.0185
+High public trust,inst_trust_mean,0.6888
+High public trust,belief_post,0.749
+High public trust,concern_mean,0.5903
+High public trust,policy_general,0.826
+High public trust,policy_specific_mean,0.562
+High public trust,behavior_mean,0.553
+High public trust,donation_ams,0.126
+High public trust,newsletter_signup,0.0073
+Measurement & modeling (2),trust_multidimensional,0.5985
+Measurement & modeling (2),trust_post,0.756
+Measurement & modeling (2),distrust_post,-0.665
+Measurement & modeling (2),funding_perceptions,0.42
+Measurement & modeling (2),policy_role_mean,0.5302
+Measurement & modeling (2),inst_trust_mean,0.4564
+Measurement & modeling (2),belief_post,0.399
+Measurement & modeling (2),concern_mean,0.2777
+Measurement & modeling (2),policy_general,-0.42
+Measurement & modeling (2),policy_specific_mean,0.357
+Measurement & modeling (2),behavior_mean,0.1902
+Measurement & modeling (2),donation_ams,0.007
+Measurement & modeling (2),newsletter_signup,-0.0042
+Peer-review,trust_multidimensional,1.4537
+Peer-review,trust_post,1.442
+Peer-review,distrust_post,-1.358
+Peer-review,funding_perceptions,0.406
+Peer-review,policy_role_mean,1.064
+Peer-review,inst_trust_mean,0.7616
+Peer-review,belief_post,0.805
+Peer-review,concern_mean,0.7
+Peer-review,policy_general,0.812
+Peer-review,policy_specific_mean,0.516
+Peer-review,behavior_mean,0.49
+Peer-review,donation_ams,0.133
+Peer-review,newsletter_signup,0.0077
+Scientist community helpers,trust_multidimensional,1.7739
+Scientist community helpers,trust_post,1.61
+Scientist community helpers,distrust_post,-1.4
+Scientist community helpers,funding_perceptions,1.12
+Scientist community helpers,policy_role_mean,1.659
+Scientist community helpers,inst_trust_mean,1.0528
+Scientist community helpers,belief_post,0.714
+Scientist community helpers,concern_mean,0.931
+Scientist community helpers,policy_general,0.938
+Scientist community helpers,policy_specific_mean,0.824
+Scientist community helpers,behavior_mean,0.7163
+Scientist community helpers,donation_ams,0.14
+Scientist community helpers,newsletter_signup,0.0105
+Consensus,trust_multidimensional,1.064
+Consensus,trust_post,1.211
+Consensus,distrust_post,-1.05
+Consensus,funding_perceptions,0.693
+Consensus,policy_role_mean,1.0395
+Consensus,inst_trust_mean,0.5306
+Consensus,belief_post,1.68
+Consensus,concern_mean,0.9357
+Consensus,policy_general,0.924
+Consensus,policy_specific_mean,0.649
+Consensus,behavior_mean,0.6335
+Consensus,donation_ams,0.105
+Consensus,newsletter_signup,0.0049
+Portrait Prof. Cherry,trust_multidimensional,1.2839
+Portrait Prof. Cherry,trust_post,1.302
+Portrait Prof. Cherry,distrust_post,-1.078
+Portrait Prof. Cherry,funding_perceptions,0.63
+Portrait Prof. Cherry,policy_role_mean,1.393
+Portrait Prof. Cherry,inst_trust_mean,0.6356
+Portrait Prof. Cherry,belief_post,0.35
+Portrait Prof. Cherry,concern_mean,0.497
+Portrait Prof. Cherry,policy_general,0.476
+Portrait Prof. Cherry,policy_specific_mean,0.524
+Portrait Prof. Cherry,behavior_mean,0.5238
+Portrait Prof. Cherry,donation_ams,0.07
+Portrait Prof. Cherry,newsletter_signup,0.0063
+Model accuracy,trust_multidimensional,1.1118
+Model accuracy,trust_post,1.484
+Model accuracy,distrust_post,-1.442
+Model accuracy,funding_perceptions,1.33
+Model accuracy,policy_role_mean,1.2617
+Model accuracy,inst_trust_mean,0.8876
+Model accuracy,belief_post,1.316
+Model accuracy,concern_mean,0.9193
+Model accuracy,policy_general,1.218
+Model accuracy,policy_specific_mean,0.763
+Model accuracy,behavior_mean,0.77
+Model accuracy,donation_ams,0.168
+Model accuracy,newsletter_signup,0.007
+Interview Prof. Sebille,trust_multidimensional,1.2676
+Interview Prof. Sebille,trust_post,0.07
+Interview Prof. Sebille,distrust_post,-0.84
+Interview Prof. Sebille,funding_perceptions,1.12
+Interview Prof. Sebille,policy_role_mean,1.2547
+Interview Prof. Sebille,inst_trust_mean,0.3752
+Interview Prof. Sebille,belief_post,0.588
+Interview Prof. Sebille,concern_mean,1.036
+Interview Prof. Sebille,policy_general,0.609
+Interview Prof. Sebille,policy_specific_mean,0.847
+Interview Prof. Sebille,behavior_mean,0.8633
+Interview Prof. Sebille,donation_ams,0.147
+Interview Prof. Sebille,newsletter_signup,0.0077
+Extreme weather predictions,trust_multidimensional,1.3767
+Extreme weather predictions,trust_post,1.442
+Extreme weather predictions,distrust_post,-1.288
+Extreme weather predictions,funding_perceptions,1.47
+Extreme weather predictions,policy_role_mean,1.5085
+Extreme weather predictions,inst_trust_mean,1.2474
+Extreme weather predictions,belief_post,0.714
+Extreme weather predictions,concern_mean,1.1037
+Extreme weather predictions,policy_general,1.134
+Extreme weather predictions,policy_specific_mean,0.89
+Extreme weather predictions,behavior_mean,0.9322
+Extreme weather predictions,donation_ams,0.175
+Extreme weather predictions,newsletter_signup,0.0091

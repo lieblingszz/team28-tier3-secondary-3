@@ -1,0 +1,1043 @@
+════════════════════════════════════════════════════════════════
+run_hipporag.sh   started: 2026-08-30T09:36:07+00:00
+args     : --hipporag_llm_path code/model/Qwen3.8-27B
+model    : qwen38
+python   : /home/jovyan/silicon-sample-team28/.venv-hipporag/bin/python
+log      : /home/jovyan/silicon-sample-team28/code/results/run_hipporag_qwen38_20260830_093607.log
+hipporag LLM : http://localhost:8000/v1 (served 'qwen38')
+{"object":"list","data":[{"id":"qwen38","object":"model","created":1788082568,"owned_by":"vllm","root":"/home/jovyan/visual_noise/models/Qwen3.8-27B","parent":null,"max_model_len":32768,"permission":[{"id":"modelperm-b4dd062631218fea","object":"model_permission","created":1788082568,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}
+════════════════════════════════════════════════════════════════
+Sun Aug 30 09:36:08 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:2F:00.0 Off |                    0 |
+| N/A   33C    P0            136W /  700W |   64338MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
++-----------------------------------------------------------------------------------------+
+
+-- processes already holding GPU memory --
+pid, process_name, used_gpu_memory [MiB]
+2155578, [Not Found], 64328 MiB
+════════════════════════════════════════════════════════════════
+
+[STIMULI] Loaded 17 official stimuli
+[HippoRAG LLM] Using served model 'qwen38' at http://localhost:8000/v1
+[HippoRAG LLM] Resuming: 2265 cached responses from /home/jovyan/silicon-sample-team28/code/hipporag_index/llm_response_cache.jsonl
+[HippoRAG Embed] Loading Qwen/Qwen3-Embedding-4B on cuda
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights: 100%|██████████| 398/398 [00:00<00:00, 5537.55it/s]
+[HippoRAG] 1132 chunks from 43 PDFs
+0it [00:00, ?it/s]1132it [00:00, 43182.44it/s]
+0it [00:00, ?it/s]1132it [00:00, 5769079.13it/s]
+[RAG] HippoRAG (knowledge graph + PPR) ready — retrieval is query-specific per outcome / intervention x outcome
+
+============================================================
+  Tier 3 Pipeline — Relative Scoring + Effect Estimation
+  Group  : Farah, Jing, Max, Marcia
+  Model  : qwen38
+  Items  : 44
+  Conds  : 16 interventions
+  RAG    : ON — query-specific per outcome / pair
+  Method : Step 1=Relative scoring (-3..+3, ties allowed), Step 2=Effect sizes
+  Est API: ~2244 LLM calls (+ cheap retrieval calls if RAG is ON)
+  Dry run: False
+============================================================
+
+
+[1/44] Outcome: trust_competence_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.37s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.37s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Model accuracy', 'Corporate reliance', 'Peer-review']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:02<00:02,  2.40s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.11s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.30s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:01<00:01,  1.73s/it]Retrieving: 100%|██████████| 2/2 [00:01<00:00,  1.16it/s]Retrieving: 100%|██████████| 2/2 [00:01<00:00,  1.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  1.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  2.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  2.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:02<00:02,  2.70s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.24s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.46s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:01<00:01,  1.90s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.10it/s]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.06s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:01<00:01,  1.83s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.16it/s]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.01s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:02<00:02,  2.42s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.11s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.31s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:01<00:01,  1.59s/it]Retrieving: 100%|██████████| 2/2 [00:01<00:00,  1.31it/s]Retrieving: 100%|██████████| 2/2 [00:01<00:00,  1.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:02<00:02,  2.61s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.18s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.40s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:03<00:03,  3.07s/it]Retrieving: 100%|██████████| 2/2 [00:03<00:00,  1.36s/it]Retrieving: 100%|██████████| 2/2 [00:03<00:00,  1.61s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:03<00:03,  3.16s/it]Retrieving: 100%|██████████| 2/2 [00:03<00:00,  1.40s/it]Retrieving: 100%|██████████| 2/2 [00:03<00:00,  1.66s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:02<00:02,  2.50s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.15s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.36s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:01<00:01,  1.63s/it]Retrieving: 100%|██████████| 2/2 [00:01<00:00,  1.28it/s]Retrieving: 100%|██████████| 2/2 [00:01<00:00,  1.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:01<00:01,  1.86s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.17it/s]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.01s/it]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  1.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  2.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  2.20it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:02<00:02,  2.50s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.14s/it]Retrieving: 100%|██████████| 2/2 [00:02<00:00,  1.35s/it]
+
+[2/44] Outcome: trust_competence_2
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.93s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.93s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Measurement & modeling (2)', 'Corporate reliance', 'Model accuracy']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.75it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.59it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.58it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.69it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.70it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.61it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.93it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]
+
+[3/44] Outcome: trust_competence_3
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.35s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.35s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Model accuracy', 'Corporate reliance', 'Measurement & modeling (2)']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.51it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.85it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.59it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]
+
+[4/44] Outcome: trust_integrity_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.67s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.68s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Peer-review', 'Model accuracy']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.62it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.79it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.63it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.79it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.63it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.90it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.55it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.55it/s]
+
+[5/44] Outcome: trust_integrity_2
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.23s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.23s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Peer-review', 'Oil industry misinformation', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.67it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.85it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.45it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.67it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.65it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.54it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.28it/s]
+
+[6/44] Outcome: trust_integrity_3
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.73s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.74s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Scientist community helpers', 'Interview Prof. Sebille']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  7.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  7.86it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.43it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.70it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.80it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.89it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.70it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.23it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.94it/s]
+
+[7/44] Outcome: trust_benevolence_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.05s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.05s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Interview Prof. Sebille', 'Portrait Prof. Cherry']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.80it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 11.59it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 11.58it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.66it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.90it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.63it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.94it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.75it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.34it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.85it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.99it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.24it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+
+[8/44] Outcome: trust_benevolence_2
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.06s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.06s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Interview Prof. Sebille', 'Portrait Prof. Cherry']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.88it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.99it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.85it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.59it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.65it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.94it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.46it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+
+[9/44] Outcome: trust_benevolence_3
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.36s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.36s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Portrait Prof. Cherry', 'Interview Prof. Sebille']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.75it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.67it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.75it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.94it/s]
+
+[10/44] Outcome: trust_openness_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.51s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.51s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Peer-review', 'Model accuracy']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.43it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.69it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.48it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.85it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]
+
+[11/44] Outcome: trust_openness_2
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.09s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.09s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Funding', 'Peer-review']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.31it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.55it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.75it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.67it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.67it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.63it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.85it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.27it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.66it/s]
+
+[12/44] Outcome: trust_openness_3
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.95s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.95s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Portrait Prof. Cherry', 'Interview Prof. Maraun']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.05it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.69it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.85it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.65it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.66it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.74it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.43it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]
+
+[13/44] Outcome: funding_5
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.94s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.94s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Funding', 'Former skeptics', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.66it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.55it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.51it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.33it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.55it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.15it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]
+
+[14/44] Outcome: inst_trust_epa
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.23s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.23s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Interview Prof. Maraun', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.79it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.78it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.74it/s]
+
+[15/44] Outcome: inst_trust_nasa
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.21s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.21s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Scientist community helpers', 'Consensus']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.81it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.80it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.65it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.62it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.55it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]
+
+[16/44] Outcome: inst_trust_noaa
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.17s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.17s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Model accuracy', 'Oil industry misinformation']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  3.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.61it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.48it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.79it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.68it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  3.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.45it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.67it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.85it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.46it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+
+[17/44] Outcome: inst_trust_uni
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.12s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.12s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Corporate reliance', 'Extreme weather predictions']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.85it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.80it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.60it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]
+
+[18/44] Outcome: inst_trust_gov
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s]Retrieving: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Interview Prof. Maraun', 'Measurement & modeling (1)']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.17it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.63it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 683.95it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.88it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.59it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.62it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.94it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.93it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.00it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 668.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.32it/s]
+
+[19/44] Outcome: policy_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.07s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.07s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Portrait Prof. Cherry', 'Extreme weather predictions', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.58it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.75it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.65it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.82it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+
+[20/44] Outcome: policy_2
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.80s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.80s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Scientist community helpers', 'Portrait Prof. Cherry']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.58it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.48it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.67it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.57it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.73it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.21it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.79it/s]
+
+[21/44] Outcome: policy_3
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.26s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.26s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Portrait Prof. Cherry', 'Extreme weather predictions']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.43it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 11.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 11.07it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.61it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.33it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.61it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.68it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.89it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.24it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.72it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+
+[22/44] Outcome: policy_4
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.93s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.93s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Former skeptics', 'Portrait Prof. Cherry', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.00it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.68it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.43it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.45it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.50it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.63it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.12it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]
+
+[23/44] Outcome: trust_post_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.69s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.69s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Oil industry misinformation', 'Corporate reliance', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.95it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.67it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.44it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+
+[24/44] Outcome: distrust_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.01s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.01s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Oil industry misinformation', 'Former skeptics', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.50it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.67it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.95it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.49it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.62it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+
+[25/44] Outcome: donation
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:01<00:00,  1.50s/it]Retrieving: 100%|██████████| 1/1 [00:01<00:00,  1.50s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Former skeptics', 'High public trust']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.36it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.99it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.79it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.33it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.95it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.52it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]
+
+[26/44] Outcome: newsletter
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.28s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.28s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Former skeptics', 'Scientist community helpers', 'Extreme weather predictions']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.56it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.90it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.65it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.66it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.14it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]
+
+[27/44] Outcome: belief_post_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.77s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.77s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Consensus', 'Oil industry misinformation', 'Model accuracy']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.76it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.62it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.66it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.75it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.75it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]
+
+[28/44] Outcome: concern_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it]Retrieving: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Consensus', 'Interview Prof. Sebille']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.93it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.95it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.56it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.79it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.68it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.62it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+
+[29/44] Outcome: concern_2
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.25s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Consensus', 'Oil industry misinformation']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.69it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 11.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 11.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.89it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  3.43it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  3.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  3.51it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.31it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.82it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.59it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.52it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.31it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.31it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.30it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.66it/s]
+
+[30/44] Outcome: concern_3
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it]Retrieving: 100%|██████████| 1/1 [00:01<00:00,  1.92s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Former skeptics', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.43it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.85it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.33it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.65it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.58it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]
+
+[31/44] Outcome: individual_meat
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:01<00:00,  1.99s/it]Retrieving: 100%|██████████| 1/1 [00:01<00:00,  1.99s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Interview Prof. Maraun', 'Measurement & modeling (1)']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.46it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.72it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.81it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.71it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.75it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.27it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+
+[32/44] Outcome: individual_transport
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.26s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.26s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Scientist community helpers', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.72it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.46it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.65it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.77it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  6.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.86it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.31it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.63it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.46it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]
+
+[33/44] Outcome: individual_solar
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.57s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.57s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Interview Prof. Maraun', 'Funding']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.89it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.97it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.70it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.79it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.63it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.97it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.49it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]
+
+[34/44] Outcome: individual_fly
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  3.00s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  3.00s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Former skeptics', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.44it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.20it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.67it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.82it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.95it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.79it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.60it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.05it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+
+[35/44] Outcome: individual_talk
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.04s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.04s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'High public trust', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.91it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.89it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.75it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.65it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.66it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.94it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.45it/s]
+
+[36/44] Outcome: individual_donate
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Social justice', 'Oil industry misinformation', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.28it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.68it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.62it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.79it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.15it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.35it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+
+[37/44] Outcome: policy_general_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.51s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.51s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Oil industry misinformation', 'Former skeptics', 'Consensus']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.23it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.78it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.80it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.65it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.43it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.38it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.81it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.66it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.60it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.35it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.92it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  7.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  7.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+
+[38/44] Outcome: policy_specific_1
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.15s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.15s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Former skeptics', 'High public trust']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.28it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.17it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.38it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.58it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.51it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.61it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.67it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.74it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.27it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.86it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.03it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.04it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.66it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.55it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.68it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.92it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.10it/s]
+
+[39/44] Outcome: policy_specific_2
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s]Retrieving: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Corporate reliance', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.65it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.75it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 724.72it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  7.89it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.73it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.79it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.24it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.40it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.60it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.01it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.84it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.45it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.63it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.59it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.94it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.99it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.66it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 728.68it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.88it/s]
+
+[40/44] Outcome: policy_specific_3
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.72s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.72s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Consensus', 'Former skeptics', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.93it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.89it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.77it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.79it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.75it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.64it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.35it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.00it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.81it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.41it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.43it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.38it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.13it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.65it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.07it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.19it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.50it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.41it/s]
+
+[41/44] Outcome: policy_specific_4
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.10s/it]Retrieving: 100%|██████████| 1/1 [00:03<00:00,  3.10s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Portrait Prof. Cherry', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.63it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.56it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.25it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.24it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.72it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.87it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.26it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.06it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.09it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.43it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.68it/s]
+
+[42/44] Outcome: policy_specific_5
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.22s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.22s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Social justice', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.61it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.33it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.68it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.62it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.46it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.86it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.99it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.18it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.14it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.02it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.73it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.76it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.98it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.81it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.72it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.56it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.69it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.04it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.02it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.57it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.31it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.74it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.52it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.87it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.41it/s]
+
+[43/44] Outcome: policy_specific_6
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.27s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.27s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Former skeptics', 'Extreme weather predictions']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.20it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.71it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.59it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  3.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.15it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00, 10.14it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.74it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.33it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.67it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.21it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.88it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.11it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.16it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.31it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.22it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.91it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.23it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.01it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.74it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.95it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.48it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.38it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.45it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.96it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.03it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.30it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.57it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.24it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.05it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.90it/s]
+
+[44/44] Outcome: policy_specific_7
+Retrieving:   0%|          | 0/1 [00:00<?, ?it/s]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.32s/it]Retrieving: 100%|██████████| 1/1 [00:02<00:00,  2.32s/it]
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Portrait Prof. Cherry', 'Interview Prof. Sebille', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.49it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.46it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.47it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.29it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.61it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  9.60it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.19it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.12it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.13it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.55it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.51it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.34it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.60it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.55it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.80it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.83it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.53it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.45it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.90it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.84it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.44it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.58it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.55it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.56it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.08it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.99it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.76it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.54it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.40it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.64it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.36it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  5.32it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.39it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  5.37it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.81it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  8.80it/s]
+Retrieving:   0%|          | 0/2 [00:00<?, ?it/s]Retrieving:  50%|█████     | 1/2 [00:00<00:00,  4.29it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.70it/s]Retrieving: 100%|██████████| 2/2 [00:00<00:00,  4.63it/s]
+
+[AGGREGATING] Computing official 13 composite outcomes...
+
+============================================================
+  ✅ TIER 3 COMPLETE
+  Internal raw        : /home/jovyan/silicon-sample-team28/code/results/tier3_raw_tier3_qwen38_rag_hipporag_20260830_093608.csv
+  Internal calibrated : /home/jovyan/silicon-sample-team28/code/results/tier3_calibrated_tier3_qwen38_rag_hipporag_20260830_093608.csv
+
+  ── SUBMISSION FILES (official format) ──
+  Raw submission      : /home/jovyan/silicon-sample-team28/code/results/tier3_submission_raw_tier3_qwen38_rag_hipporag_20260830_093608.csv
+  Calibrated submit   : /home/jovyan/silicon-sample-team28/code/results/tier3_submission_calibrated_tier3_qwen38_rag_hipporag_20260830_093608.csv  ← USE THIS
+  Format: condition, outcome, ate (208 rows)
+  Units: percentage points of scale range
+============================================================
+
+════════════════════════════════════════════════════════════════
+run_hipporag.sh   finished: 2026-08-30T10:26:29+00:00   exit status: 0
+════════════════════════════════════════════════════════════════

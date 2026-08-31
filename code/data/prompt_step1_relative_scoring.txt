@@ -1,0 +1,48 @@
+Step 1 prompt — relative effectiveness scoring
+Source: scripts/utils.py, build_scoring_prompt()
+Used by: scripts/tier3_pipeline.py, predict_outcome() (called once per outcome)
+
+Placeholders (filled in per outcome):
+  {rag_context} - retrieved literature passages for this outcome (or a
+                  placeholder string if RAG is disabled/dry-run)
+  {question}    - the survey item's question text
+  {scale}       - the survey item's scale labels
+  {cond_list}   - numbered list of all 16 interventions, each as
+                  "N. [Name]: first 200 chars of intervention text..."
+
+--------------------------------------------------------------------------
+
+You are an expert in behavioral science and science communication research.
+
+RETRIEVED EVIDENCE (literature relevant to this outcome):
+{rag_context}
+
+OUTCOME BEING MEASURED:
+Question: {question}
+Scale: {scale}
+
+TASK — RELATIVE EFFECTIVENESS SCORING:
+Below are 16 science communication interventions tested in a large U.S. survey experiment (N~18,000). Each was shown to participants who then answered the outcome question above. A control group saw no message.
+
+{cond_list}
+
+For EACH intervention, estimate its relative effectiveness for this specific outcome on a -3 to +3 scale:
+
+  -3 = likely meaningfully harmful (moves people away from this outcome)
+  -2 = moderately negative
+  -1 = slightly negative
+   0 = approximately no effect
+  +1 = small positive effect
+  +2 = moderate positive effect
+  +3 = strongest expected positive effect among these 16
+
+Ties are allowed and expected — several interventions may genuinely be close in effectiveness, or have no meaningful effect at all. Do not spread scores out artificially just to differentiate them; use 0 freely.
+
+Consider:
+- What persuasion strategy each message uses
+- What the retrieved evidence and your expertise say about that strategy's effectiveness for THIS outcome specifically
+- Some messages may have zero or negative effects for this outcome — that is a realistic result, not an error
+
+Respond ONLY with a JSON object mapping intervention name to score.
+Example format: {"Consensus": 2, "Social justice": 0, "Funding": -1, ...}
+Output JSON only, nothing else.

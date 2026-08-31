@@ -1,0 +1,357 @@
+{
+  "source": "repos/silicon-sample-submission/survey/questionnaire.txt + codebook.csv",
+  "n_raw_items": 44,
+  "n_outcomes": 13,
+  "items": {
+    "trust_competence_1": {
+      "question": "How incompetent or competent are most climate scientists?",
+      "scale_labels": "0 = Very incompetent, 100 = Very competent",
+      "type": "slider 0-100"
+    },
+    "trust_competence_2": {
+      "question": "How unintelligent or intelligent are most climate scientists?",
+      "scale_labels": "0 = Very unintelligent, 100 = Very intelligent",
+      "type": "slider 0-100"
+    },
+    "trust_competence_3": {
+      "question": "How unqualified or qualified are most climate scientists?",
+      "scale_labels": "0 = Very unqualified, 100 = Very qualified",
+      "type": "slider 0-100"
+    },
+    "trust_integrity_1": {
+      "question": "How dishonest or honest are most climate scientists?",
+      "scale_labels": "0 = Very dishonest, 100 = Very honest",
+      "type": "slider 0-100"
+    },
+    "trust_integrity_2": {
+      "question": "How unethical or ethical are most climate scientists?",
+      "scale_labels": "0 = Very unethical, 100 = Very ethical",
+      "type": "slider 0-100"
+    },
+    "trust_integrity_3": {
+      "question": "How insincere or sincere are most climate scientists?",
+      "scale_labels": "0 = Very insincere, 100 = Very sincere",
+      "type": "slider 0-100"
+    },
+    "trust_benevolence_1": {
+      "question": "How unconcerned or concerned are most climate scientists about people's wellbeing?",
+      "scale_labels": "0 = Very unconcerned, 100 = Very concerned",
+      "type": "slider 0-100"
+    },
+    "trust_benevolence_2": {
+      "question": "How uneager or eager are most climate scientists to improve others' lives?",
+      "scale_labels": "0 = Very uneager, 100 = Very eager",
+      "type": "slider 0-100"
+    },
+    "trust_benevolence_3": {
+      "question": "How inconsiderate or considerate are most climate scientists of others' interests?",
+      "scale_labels": "0 = Very inconsiderate, 100 = Very considerate",
+      "type": "slider 0-100"
+    },
+    "trust_openness_1": {
+      "question": "How open, if at all, are most climate scientists to feedback?",
+      "scale_labels": "0 = Not open at all, 100 = Very open",
+      "type": "slider 0-100"
+    },
+    "trust_openness_2": {
+      "question": "How unwilling or willing are most climate scientists to be transparent?",
+      "scale_labels": "0 = Very unwilling, 100 = Very willing",
+      "type": "slider 0-100"
+    },
+    "trust_openness_3": {
+      "question": "How much or how little attention do climate scientists pay to other people's views?",
+      "scale_labels": "0 = Very little attention, 100 = A great deal of attention",
+      "type": "slider 0-100"
+    },
+    "funding_5": {
+      "question": "Do you think the federal government is spending too much, too little or about the right amount of money on climate change research?",
+      "scale_labels": "0 = far too little, 50 = about the right amount, 100 = far too much",
+      "type": "slider 0-100"
+    },
+    "inst_trust_epa": {
+      "question": "How much do you trust: Environmental Protection Agency (EPA)",
+      "scale_labels": "0 = not at all, 100 = very strongly",
+      "type": "slider 0-100"
+    },
+    "inst_trust_nasa": {
+      "question": "How much do you trust: National Aeronautics and Space Administration (NASA)",
+      "scale_labels": "0 = not at all, 100 = very strongly",
+      "type": "slider 0-100"
+    },
+    "inst_trust_noaa": {
+      "question": "How much do you trust: National Oceanic and Atmospheric Administration (NOAA)",
+      "scale_labels": "0 = not at all, 100 = very strongly",
+      "type": "slider 0-100"
+    },
+    "inst_trust_uni": {
+      "question": "How much do you trust: Universities and colleges",
+      "scale_labels": "0 = not at all, 100 = very strongly",
+      "type": "slider 0-100"
+    },
+    "inst_trust_gov": {
+      "question": "How much do you trust: Federal government",
+      "scale_labels": "0 = not at all, 100 = very strongly",
+      "type": "slider 0-100"
+    },
+    "policy_1": {
+      "question": "Climate scientists should work closely with policy makers to integrate scientific results into policy-making.",
+      "scale_labels": "0 = Strongly disagree, 100 = Strongly agree",
+      "type": "slider 0-100"
+    },
+    "policy_2": {
+      "question": "Climate scientists should actively advocate for specific policies.",
+      "scale_labels": "0 = Strongly disagree, 100 = Strongly agree",
+      "type": "slider 0-100"
+    },
+    "policy_3": {
+      "question": "Climate scientists should communicate their findings to policy makers.",
+      "scale_labels": "0 = Strongly disagree, 100 = Strongly agree",
+      "type": "slider 0-100"
+    },
+    "policy_4": {
+      "question": "Climate scientists should be more involved in the policy-making process.",
+      "scale_labels": "0 = Strongly disagree, 100 = Strongly agree",
+      "type": "slider 0-100"
+    },
+    "trust_post_1": {
+      "question": "How much do you trust climate scientists?",
+      "scale_labels": "0 = not at all, 100 = very strongly",
+      "type": "slider 0-100"
+    },
+    "distrust_1": {
+      "question": "How much do you distrust climate scientists?",
+      "scale_labels": "0 = not at all, 100 = very strongly",
+      "type": "slider 0-100"
+    },
+    "donation": {
+      "question": "Of the $10 bonus, how much would you like to donate to the American Meteorological Society (AMS)?",
+      "scale_labels": "whole dollars, 0 to 10",
+      "type": "integer 0-10"
+    },
+    "newsletter": {
+      "question": "You were offered a free subscription to climate scientist Katharine Hayhoe's newsletter 'Talking Climate' (short, accessible updates on climate science and solutions; signing up takes under a minute, opens in a new tab, entirely optional). Did you subscribe?",
+      "scale_labels": "1 = Yes, 0 = No",
+      "type": "binary 0/1"
+    },
+    "belief_post_1": {
+      "question": "How accurate do you think this statement is? 'Human activities are causing climate change.'",
+      "scale_labels": "0 = not at all accurate, 100 = extremely accurate",
+      "type": "slider 0-100"
+    },
+    "concern_1": {
+      "question": "How concerned are you about climate change?",
+      "scale_labels": "0 = Not at all, 100 = Extremely",
+      "type": "slider 0-100"
+    },
+    "concern_2": {
+      "question": "How serious a problem is climate change?",
+      "scale_labels": "0 = Not at all, 100 = Extremely",
+      "type": "slider 0-100"
+    },
+    "concern_3": {
+      "question": "Relative to other issues facing the U.S., how important is climate change?",
+      "scale_labels": "0 = The least important issue, 100 = The most important issue",
+      "type": "slider 0-100"
+    },
+    "individual_meat": {
+      "question": "How likely are you in the next 12 months to: Eat less meat",
+      "scale_labels": "0 = Not likely at all, 100 = Extremely likely",
+      "type": "slider 0-100"
+    },
+    "individual_transport": {
+      "question": "How likely are you in the next 12 months to: Walk, bicycle, carpool, or take public transportation more often instead of driving by yourself",
+      "scale_labels": "0 = Not likely at all, 100 = Extremely likely",
+      "type": "slider 0-100"
+    },
+    "individual_solar": {
+      "question": "How likely are you in the next 12 months to: Install a solar panel",
+      "scale_labels": "0 = Not likely at all, 100 = Extremely likely",
+      "type": "slider 0-100"
+    },
+    "individual_fly": {
+      "question": "How likely are you in the next 12 months to: Go on less personal (non-business) air travel",
+      "scale_labels": "0 = Not likely at all, 100 = Extremely likely",
+      "type": "slider 0-100"
+    },
+    "individual_talk": {
+      "question": "How likely are you in the next 12 months to: Talk to friends and family about the importance of climate change",
+      "scale_labels": "0 = Not likely at all, 100 = Extremely likely",
+      "type": "slider 0-100"
+    },
+    "individual_donate": {
+      "question": "How likely are you in the next 12 months to: Donate to an environmental NGO",
+      "scale_labels": "0 = Not likely at all, 100 = Extremely likely",
+      "type": "slider 0-100"
+    },
+    "policy_general_1": {
+      "question": "How much do you oppose or support: 'The U.S. government should do more to reduce global warming'",
+      "scale_labels": "0 = Strongly oppose, 100 = Strongly support",
+      "type": "slider 0-100"
+    },
+    "policy_specific_1": {
+      "question": "How much do you support or oppose: Raising taxes on fossil fuels (e.g., gas, oil, coal)",
+      "scale_labels": "0 = Strongly oppose, 100 = Strongly support",
+      "type": "slider 0-100"
+    },
+    "policy_specific_2": {
+      "question": "How much do you support or oppose: Expanding infrastructure for public transportation",
+      "scale_labels": "0 = Strongly oppose, 100 = Strongly support",
+      "type": "slider 0-100"
+    },
+    "policy_specific_3": {
+      "question": "How much do you support or oppose: Increasing the use of sustainable energy such as wind and solar energy",
+      "scale_labels": "0 = Strongly oppose, 100 = Strongly support",
+      "type": "slider 0-100"
+    },
+    "policy_specific_4": {
+      "question": "How much do you support or oppose: Protecting forested and land areas",
+      "scale_labels": "0 = Strongly oppose, 100 = Strongly support",
+      "type": "slider 0-100"
+    },
+    "policy_specific_5": {
+      "question": "How much do you support or oppose: Increasing taxes on carbon-intensive foods (e.g., beef and dairy products)",
+      "scale_labels": "0 = Strongly oppose, 100 = Strongly support",
+      "type": "slider 0-100"
+    },
+    "policy_specific_6": {
+      "question": "How much do you support or oppose: Investing more in green jobs and businesses",
+      "scale_labels": "0 = Strongly oppose, 100 = Strongly support",
+      "type": "slider 0-100"
+    },
+    "policy_specific_7": {
+      "question": "How much do you support or oppose: Introducing laws to keep waterways and oceans clean",
+      "scale_labels": "0 = Strongly oppose, 100 = Strongly support",
+      "type": "slider 0-100"
+    }
+  },
+  "outcomes": {
+    "trust_multidimensional": {
+      "rule": "mean",
+      "items": [
+        "trust_competence_1",
+        "trust_competence_2",
+        "trust_competence_3",
+        "trust_integrity_1",
+        "trust_integrity_2",
+        "trust_integrity_3",
+        "trust_benevolence_1",
+        "trust_benevolence_2",
+        "trust_benevolence_3",
+        "trust_openness_1",
+        "trust_openness_2",
+        "trust_openness_3"
+      ]
+    },
+    "trust_post": {
+      "rule": "copy",
+      "items": [
+        "trust_post_1"
+      ]
+    },
+    "distrust_post": {
+      "rule": "copy",
+      "items": [
+        "distrust_1"
+      ]
+    },
+    "funding_perceptions": {
+      "rule": "reverse100",
+      "items": [
+        "funding_5"
+      ]
+    },
+    "policy_role_mean": {
+      "rule": "mean",
+      "items": [
+        "policy_1",
+        "policy_2",
+        "policy_3",
+        "policy_4"
+      ]
+    },
+    "inst_trust_mean": {
+      "rule": "mean",
+      "items": [
+        "inst_trust_epa",
+        "inst_trust_nasa",
+        "inst_trust_noaa",
+        "inst_trust_uni",
+        "inst_trust_gov"
+      ]
+    },
+    "belief_post": {
+      "rule": "copy",
+      "items": [
+        "belief_post_1"
+      ]
+    },
+    "concern_mean": {
+      "rule": "mean",
+      "items": [
+        "concern_1",
+        "concern_2",
+        "concern_3"
+      ]
+    },
+    "policy_general": {
+      "rule": "copy",
+      "items": [
+        "policy_general_1"
+      ]
+    },
+    "policy_specific_mean": {
+      "rule": "mean",
+      "items": [
+        "policy_specific_1",
+        "policy_specific_2",
+        "policy_specific_3",
+        "policy_specific_4",
+        "policy_specific_5",
+        "policy_specific_6",
+        "policy_specific_7"
+      ]
+    },
+    "behavior_mean": {
+      "rule": "mean",
+      "items": [
+        "individual_meat",
+        "individual_transport",
+        "individual_solar",
+        "individual_fly",
+        "individual_talk",
+        "individual_donate"
+      ]
+    },
+    "donation_ams": {
+      "rule": "copy",
+      "items": [
+        "donation"
+      ]
+    },
+    "newsletter_signup": {
+      "rule": "copy",
+      "items": [
+        "newsletter"
+      ]
+    }
+  },
+  "stimuli": {
+    "Corporate reliance": "corporate_reliance.txt",
+    "Social justice": "social_justice.txt",
+    "Interview Prof. Maraun": "interview_prof_maraun.txt",
+    "Funding": "funding.txt",
+    "Oil industry misinformation": "oil_industry_misinformation.txt",
+    "Measurement & modeling (1)": "measurement_modeling_1.txt",
+    "Former skeptics": "former_skeptics.txt",
+    "High public trust": "high_public_trust.txt",
+    "Measurement & modeling (2)": "measurement_modeling_2.txt",
+    "Peer-review": "peer_review.txt",
+    "Scientist community helpers": "scientist_community_helpers.txt",
+    "Consensus": "consensus.txt",
+    "Portrait Prof. Cherry": "portrait_prof_cherry.txt",
+    "Model accuracy": "model_accuracy.txt",
+    "Interview Prof. Sebille": "interview_prof_sebille.txt",
+    "Extreme weather predictions": "extreme_weather_predictions.txt",
+    "control": "control.txt"
+  }
+}

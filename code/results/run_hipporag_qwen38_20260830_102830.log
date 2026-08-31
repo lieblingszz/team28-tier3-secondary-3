@@ -1,0 +1,296 @@
+════════════════════════════════════════════════════════════════
+run_hipporag.sh   started: 2026-08-30T10:28:30+00:00
+args     : --hipporag_llm_path code/model/Qwen3.8-27B --graph_weight 0.7
+model    : qwen38
+python   : /home/jovyan/silicon-sample-team28/.venv-hipporag/bin/python
+log      : /home/jovyan/silicon-sample-team28/code/results/run_hipporag_qwen38_20260830_102830.log
+hipporag LLM : http://localhost:8000/v1 (served 'qwen38')
+{"object":"list","data":[{"id":"qwen38","object":"model","created":1788085710,"owned_by":"vllm","root":"/home/jovyan/visual_noise/models/Qwen3.8-27B","parent":null,"max_model_len":32768,"permission":[{"id":"modelperm-9a1154fb9752baee","object":"model_permission","created":1788085710,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}
+════════════════════════════════════════════════════════════════
+Sun Aug 30 10:28:30 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:2F:00.0 Off |                    0 |
+| N/A   33C    P0            135W /  700W |   64342MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
++-----------------------------------------------------------------------------------------+
+
+-- processes already holding GPU memory --
+pid, process_name, used_gpu_memory [MiB]
+2155578, [Not Found], 64332 MiB
+════════════════════════════════════════════════════════════════
+
+[STIMULI] Loaded 17 official stimuli
+[HippoRAG LLM] Using served model 'qwen38' at http://localhost:8000/v1
+[HippoRAG LLM] Resuming: 2325 cached responses from /home/jovyan/silicon-sample-team28/code/hipporag_index/llm_response_cache.jsonl
+[HippoRAG Embed] Loading Qwen/Qwen3-Embedding-4B on cuda
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights: 100%|██████████| 398/398 [00:00<00:00, 5319.09it/s]
+[HippoRAG] Fusion on: 0.70 graph / 0.30 dense, pit normalisation, passage_node_weight=0.05
+[HippoRAG] 1132 chunks from 43 PDFs
+0it [00:00, ?it/s]1132it [00:00, 42439.04it/s]
+0it [00:00, ?it/s]1132it [00:00, 5579262.20it/s]
+[RAG] HippoRAG (knowledge graph + PPR) ready — retrieval is query-specific per outcome / intervention x outcome
+
+============================================================
+  Tier 3 Pipeline — Relative Scoring + Effect Estimation
+  Group  : Farah, Jing, Max, Marcia
+  Model  : qwen38
+  Items  : 44
+  Conds  : 16 interventions
+  RAG    : ON — query-specific per outcome / pair
+  Method : Step 1=Relative scoring (-3..+3, ties allowed), Step 2=Effect sizes
+  Est API: ~2244 LLM calls (+ cheap retrieval calls if RAG is ON)
+  Dry run: False
+============================================================
+
+
+[1/44] Outcome: trust_competence_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Model accuracy', 'Corporate reliance', 'Peer-review']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[2/44] Outcome: trust_competence_2
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Measurement & modeling (2)', 'Model accuracy', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[3/44] Outcome: trust_competence_3
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Model accuracy', 'Corporate reliance', 'Measurement & modeling (2)']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[4/44] Outcome: trust_integrity_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Model accuracy', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[5/44] Outcome: trust_integrity_2
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Oil industry misinformation', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[6/44] Outcome: trust_integrity_3
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Scientist community helpers', 'Interview Prof. Sebille']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[7/44] Outcome: trust_benevolence_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Sebille', 'Scientist community helpers', 'Extreme weather predictions']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[8/44] Outcome: trust_benevolence_2
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Interview Prof. Sebille', 'Portrait Prof. Cherry']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[9/44] Outcome: trust_benevolence_3
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Portrait Prof. Cherry', 'Interview Prof. Sebille']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[10/44] Outcome: trust_openness_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Peer-review', 'Consensus']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[11/44] Outcome: trust_openness_2
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Funding', 'Interview Prof. Maraun', 'Peer-review']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[12/44] Outcome: trust_openness_3
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Portrait Prof. Cherry', 'Interview Prof. Maraun', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[13/44] Outcome: funding_5
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Funding', 'Corporate reliance', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[14/44] Outcome: inst_trust_epa
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Consensus', 'Corporate reliance', 'Interview Prof. Maraun']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[15/44] Outcome: inst_trust_nasa
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Maraun', 'Consensus', 'Model accuracy']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[16/44] Outcome: inst_trust_noaa
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Oil industry misinformation', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[17/44] Outcome: inst_trust_uni
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Former skeptics', 'Extreme weather predictions', 'Oil industry misinformation']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[18/44] Outcome: inst_trust_gov
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Interview Prof. Maraun', 'Measurement & modeling (1)']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[19/44] Outcome: policy_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Portrait Prof. Cherry', 'Extreme weather predictions', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[20/44] Outcome: policy_2
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Sebille', 'Oil industry misinformation', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[21/44] Outcome: policy_3
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Former skeptics', 'Extreme weather predictions', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[22/44] Outcome: policy_4
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Portrait Prof. Cherry', 'Corporate reliance', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[23/44] Outcome: trust_post_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Consensus', 'Model accuracy', 'Oil industry misinformation']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[24/44] Outcome: distrust_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Former skeptics', 'Corporate reliance', 'Oil industry misinformation']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[25/44] Outcome: donation
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'High public trust', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[26/44] Outcome: newsletter
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Former skeptics', 'Consensus']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[27/44] Outcome: belief_post_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Consensus', 'Oil industry misinformation', 'Model accuracy']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[28/44] Outcome: concern_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Interview Prof. Sebille', 'Oil industry misinformation']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[29/44] Outcome: concern_2
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Consensus', 'Interview Prof. Sebille']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[30/44] Outcome: concern_3
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Corporate reliance', 'Oil industry misinformation']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[31/44] Outcome: individual_meat
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Interview Prof. Sebille', 'Corporate reliance', 'Social justice']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[32/44] Outcome: individual_transport
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Extreme weather predictions', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[33/44] Outcome: individual_solar
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Former skeptics', 'Corporate reliance', 'Extreme weather predictions']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[34/44] Outcome: individual_fly
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Corporate reliance', 'Interview Prof. Maraun']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[35/44] Outcome: individual_talk
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Scientist community helpers', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[36/44] Outcome: individual_donate
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Oil industry misinformation', 'Former skeptics', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[37/44] Outcome: policy_general_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Consensus', 'Former skeptics', 'Extreme weather predictions']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[38/44] Outcome: policy_specific_1
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['High public trust', 'Former skeptics', 'Corporate reliance']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[39/44] Outcome: policy_specific_2
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Extreme weather predictions', 'Former skeptics', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[40/44] Outcome: policy_specific_3
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Consensus', 'Corporate reliance', 'Oil industry misinformation']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[41/44] Outcome: policy_specific_4
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Scientist community helpers', 'Former skeptics', 'Consensus']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[42/44] Outcome: policy_specific_5
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Social justice', 'Oil industry misinformation', 'Former skeptics']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[43/44] Outcome: policy_specific_6
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Corporate reliance', 'Former skeptics', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[44/44] Outcome: policy_specific_7
+    [Step 1] Scoring 16 interventions (relative effectiveness, -3..+3, ties allowed)...
+    [Step 1] Done. Top by score: ['Portrait Prof. Cherry', 'Interview Prof. Sebille', 'Scientist community helpers']
+    [Step 2] Estimating effect sizes (intervention x outcome specific retrieval)...
+
+[AGGREGATING] Computing official 13 composite outcomes...
+
+============================================================
+  ✅ TIER 3 COMPLETE
+  Internal raw        : /home/jovyan/silicon-sample-team28/code/results/tier3_raw_tier3_qwen38_rag_hipporag_g70_20260830_102830.csv
+  Internal calibrated : /home/jovyan/silicon-sample-team28/code/results/tier3_calibrated_tier3_qwen38_rag_hipporag_g70_20260830_102830.csv
+
+  ── SUBMISSION FILES (official format) ──
+  Raw submission      : /home/jovyan/silicon-sample-team28/code/results/tier3_submission_raw_tier3_qwen38_rag_hipporag_g70_20260830_102830.csv
+  Calibrated submit   : /home/jovyan/silicon-sample-team28/code/results/tier3_submission_calibrated_tier3_qwen38_rag_hipporag_g70_20260830_102830.csv  ← USE THIS
+  Format: condition, outcome, ate (208 rows)
+  Units: percentage points of scale range
+============================================================
+
+════════════════════════════════════════════════════════════════
+run_hipporag.sh   finished: 2026-08-30T11:16:38+00:00   exit status: 0
+════════════════════════════════════════════════════════════════

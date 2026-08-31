@@ -1,0 +1,68 @@
+# HippoRAG-backed RAG option — SEPARATE venv from the repo's main
+# requirements.txt
+#
+# Why a second venv: `pip install hipporag` pulls its own pinned
+# transformers==4.45.2 / torch==2.5.1 / vllm==0.6.6.post1 closure, which
+# directly conflicts with this repo's main pins (transformers==5.15.0,
+# torch==2.6.0+cu124, vllm==0.8.5 — see requirements.txt's comment block).
+# Installing hipporag into the shared .venv silently downgrades all three,
+# which breaks --model qwen_hf (transformers<5.0 can't parse the qwen3_5
+# architecture at all: "model type qwen3_5 not recognized" — confirmed by
+# doing exactly this and having to restore .venv from requirements.txt).
+#
+# So: hipporag lives in .venv-hipporag (sibling to .venv), with
+# transformers force-upgraded past hipporag's own pin *inside that venv
+# only*. The two venvs never share site-packages, so neither can break the
+# other. To use this RAG backend, launch the pipeline with THIS venv's
+# interpreter, not .venv's:
+#
+#   python3 -m venv .venv-hipporag
+#   source .venv-hipporag/bin/activate
+#   pip install --upgrade pip
+#   pip install hipporag                                    # pulls its own transformers==4.45.2/torch==2.5.1/vllm==0.6.6.post1
+#   pip install "transformers==5.15.0" "accelerate==1.14.0" "tokenizers==0.22.2"   # force-upgrade past hipporag's pin — needed to load the qwen3_5-architecture local checkpoint
+#   pip install "pymupdf==1.28.2"                            # PDF extraction, reused from utils.py
+#   deactivate
+#
+#   ./code/scripts/run_hipporag.sh                                        # the normal entry point
+#   ./.venv-hipporag/bin/python code/scripts/01_tier3_hipporag.py --model qwen38 ...
+#   ./.venv-hipporag/bin/python code/scripts/hipporag_rag.py --build --test   # index corpus/*.pdf + sanity-check retrieval standalone
+#
+# `pip check` will report hipporag's own declared pins (transformers,
+# torch, vllm, networkx, openai, tiktoken, tenacity, pydantic) as
+# "incompatible" after the transformers upgrade — this is EXPECTED and
+# harmless for our use: hipporag_rag.py never uses hipporag's own
+# transformers-dependent embedding backends (GritLM/NV-Embed-v2/
+# Contriever) or its vllm-offline OpenIE path; it monkeypatches
+# hipporag.HippoRAG's LLM/embedding factories to use local
+# `transformers`-direct generation and `sentence-transformers` instead
+# (see hipporag_rag.py's module docstring for exactly what's patched and
+# why). vllm is left at hipporag's own pin (0.6.6.post1) since it's never
+# actually invoked — no HTTP server is started anywhere in this path.
+#
+# Verified end-to-end on this server: real Qwen3.5-27B checkpoint (same
+# one --model qwen_hf uses) performed OpenIE (NER + triple extraction) on
+# a test corpus, built a real graph, and retrieve()/retrieve_merged()
+# returned correctly ranked, cited evidence — no OpenAI/GPT calls anywhere
+# in the path (embedding is local sentence-transformers too, default
+# Qwen/Qwen3-Embedding-4B, same model this repo's --embedding_backend
+# local already uses for VectorRAG).
+#
+# GPU note: this loads a SECOND full copy of the 27B checkpoint if you run
+# it alongside a `qwen_local` vLLM server or another `qwen_hf` process —
+# check `nvidia-smi` before running both; on this server's H100 80GB, one
+# instance alone uses ~54GB (bf16), so two won't fit simultaneously.
+#
+# ── Direct/pinned versions as actually installed (2026-08-20) ──────────
+hipporag==2.0.0a3
+transformers==5.15.0             # force-upgraded past hipporag's own pin (4.45.2) — required to recognize the qwen3_5 architecture
+torch==2.5.1+cu124                # hipporag's own pin (NOT this repo's main 2.6.0 — resolved automatically to the +cu124 build matching this server's CUDA 12.4 driver cap)
+torchvision==0.20.1
+accelerate==1.14.0
+tokenizers==0.22.2
+sentence-transformers==5.7.0     # local embedding backend (default model: Qwen/Qwen3-Embedding-4B)
+pymupdf==1.28.2                  # PDF extraction — same pin as scripts/requirements.txt
+vllm==0.6.6.post1                # hipporag's own pin — present as a transitive dep but never invoked (no server started)
+openai==1.58.1                   # hipporag's own transitive dep — the openai *package* is present but no OpenAI API calls are made (see monkeypatch above)
+networkx==3.4.2
+numpy==1.26.4

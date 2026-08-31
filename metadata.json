@@ -6,41 +6,44 @@
     {
       "name": "Adeeba, Farah",
       "affiliation": "University of Konstanz",
-      "orcid": ""
+      "orcid": "0009-0001-1740-8657"
     },
     {
       "name": "Ma, Jing",
       "affiliation": "University of Konstanz",
-      "orcid": ""
+      "orcid": "0009-0007-8951-9819"
     },
     {
       "name": "Ferreira Goncalves, Marcia",
       "affiliation": "Graphwise",
-      "orcid": ""
+      "orcid": "0000-0001-5337-4637"
     },
     {
       "name": "Pellert, Max",
       "affiliation": "Barcelona Supercomputing Center",
-      "orcid": ""
+      "orcid": "0000-0002-6557-7607"
     }
   ],
-  "abstract": "This repository direct predict treatment-effect using Claude Sonnet 4.6 with literature-conditioned retrieval-augmented generation. Predictions are calibrated and reported as average treatment effects for 16 interventions across 13 outcomes.",
+  "abstract": "This Tier 3 entry uses a literature-conditioned multi-model ensemble to directly forecast treatment effects. The ensemble combines predictions from GPT-4o, GPT-5.4, Claude Sonnet 4.6, and Qwen3.8-27B. Qwen3.8-27B contributes two HippoRAG-based prediction series: one using the standard HippoRAG ranking and one using PIT-normalized fusion of 0.7 × graph and 0.3 × dense retrieval. The two Qwen series are averaged first, after which the four model-level prediction series are combined with equal weight. All predictions are calibrated and reported as average treatment effects for 16 interventions across 13 outcomes.",
   "license": "CC-BY-4.0",
   "tier": 3,
-  "entry": "secondary-2",
-  "approach_family": "direct forecast, single model, literature-conditioned (RAG)",
+  "entry": "secondary-3",
+  "approach_family": "direct forecast, multi-model ensemble, literature-conditioned (RAG)",
   "models": [
-    "claude-sonnet-4-6"
+    "gpt-4o",
+    "gpt-5.4",
+    "claude-sonnet-4-6",
+    "Qwen/Qwen3.8-27B"
   ],
-  "code_repository": "https://github.com/lieblingszz/team28-tier3-secondary-2",
+  "code_repository": "https://github.com/lieblingszz/team28-tier3-secondary-3",
   "code_doi": null,
   "disclosure_class": "A",
   "escrow_doi": null,
   "zenodo_doi": null,
   "prediction_files": [
     {
-      "file": "predictions/team_28_T3_secondary-2_v1.csv",
-      "sha256": "b71320df9e4e9e22f4528fb2b1306a8c8e8662113d02b84d3694467ebefe3582"
+      "file": "predictions/team_28_T3_secondary-3_v1.csv",
+      "sha256": "12daec362055ae5a3eeabe0413a51eb46134485294d3f9171ca3dcf7227ce702"
     }
   ],
   "coverage": {
